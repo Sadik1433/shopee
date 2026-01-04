@@ -6,7 +6,7 @@ import ProductCategory from "./ProductCategory.jsx";
 import banner_kids from "./Assets/banner_kids.png";
 import banner_men from "./Assets/banner_mens.png";
 import banner_women from "./Assets/banner_women.png";
-import Cart from './Cart.jsx';
+import Cart from '../Pages/Cart.jsx'
 
 const AppRouter = () => {
   

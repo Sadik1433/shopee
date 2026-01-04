@@ -1,24 +1,17 @@
-import { useContext, useState } from "react";
-// import ProductList from "./ProductList";
-import { ShopContext } from "./context/ShopContext";
 
-
-export default function Cart() {
-  const { all_product, cartItems, removeFromCart } = useContext(ShopContext);
-
+export default function CartList({onSelect, all_product, cartItems}) {
+  
   return (
-    <div className="flex  justify-center items-center">   
-      <div className="h-screen relative border-2 rounded-lg shadow-lg p-4 m-4">
-        <div className="flow-root"  >
-          <div className="bg-blue-300 font-bold text-3xl sticky top-12 text-center p-4">
-            <h1>Cart Items</h1>
-          </div>
-          <ul role="list" className="py-2 overflow-y-auto ">
+    <div className="h-full flex  justify-center items-center">
+      <div className="w-[600px] relative top-10 shadow-lg py-2 m-4">
+        <div className="flow-root">
+          <ul role="list" className=" h-full py-2  overflow-y-auto scroll-hide  ">
             {all_product.map((product) => {
               if (cartItems[product.id] > 0) {
                 return (
                   <li
                     key={product.id}
+                    onClick={() => onSelect(product)}
                     className="flex m-2 py-2 px-2 min-w-145 border-1 rounded"
                   >
                     <div className="size-24 shrink-0 overflow-hidden rounded-md border border-gray-200">
@@ -64,5 +57,5 @@ export default function Cart() {
         </div>
       </div>
     </div>
-  );  
+  );
 }
