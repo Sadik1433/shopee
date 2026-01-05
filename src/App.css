@@ -1,9 +1,16 @@
 
 body {
+  height: min-content;
   overflow: hidden;
   overflow-y: scroll;
-  background-color: #c1eaf0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
@@ -11,3 +18,5 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+

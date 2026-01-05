@@ -11,7 +11,7 @@ import Cart from '../Pages/Cart.jsx'
 const AppRouter = () => {
   
   return (
-    <div className="relative left-12">
+    <div className="relative left-12 ">
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route

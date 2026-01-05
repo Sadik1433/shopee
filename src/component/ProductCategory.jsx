@@ -1,9 +1,10 @@
 import all_products from "./Assets/all_product.js";
+import FooterSection from "./FooterSection.jsx";
 import Item from "./Item/Item.jsx";
 
 const ProductCategory = (props) => {
   return (
-    <div className="relative top-15 right-5 max-w-1xl lg:max-w-7xl pr-2">
+    <div className="bg-sky-100 relative top-15 right-5 bottom-0 max-w-1xl lg:max-w-7xl pr-2 ">
       <div className="p-1">
         <img
           src={props.banner}
@@ -17,6 +18,7 @@ const ProductCategory = (props) => {
             return <Item key={i} id={item.id}  name={item.name} image={item.image} description={item.description} price={item.price} actual={item.actualPrice} rating={item.rating} badge={item.badge}/>;
         })}
       </div>
+      <FooterSection />
     </div>
   );
 };

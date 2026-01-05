@@ -1,9 +1,13 @@
 
-export default function CartList({onSelect, all_product, cartItems}) {
+export default function CartList({onSelect, all_product, cartItems,getTotalCartAmount}) {
   
   return (
-    <div className="h-full flex  justify-center items-center">
-      <div className="w-[600px] relative top-10 shadow-lg py-2 m-4">
+    <div className="flex  justify-center ">
+      <div className="w-[500px] relative top-10 shadow-lg py-2 m-4">
+      <div className="bg-blue-900 border-1 text-white p-2 flex justify-between">
+        <h1 className="text-xl">CartItems</h1>
+        <span>Total Amount . {getTotalCartAmount()}</span>
+      </div>
         <div className="flow-root">
           <ul role="list" className=" h-full py-2  overflow-y-auto scroll-hide  ">
             {all_product.map((product) => {
@@ -12,9 +16,9 @@ export default function CartList({onSelect, all_product, cartItems}) {
                   <li
                     key={product.id}
                     onClick={() => onSelect(product)}
-                    className="flex m-2 py-2 px-2 min-w-145 border-1 rounded"
+                    className="flex m-2 py-2 px-2 min-w-120 border-1 rounded"
                   >
-                    <div className="size-24 shrink-0 overflow-hidden rounded-md border border-gray-200">
+                    <div className="size-18 shrink-0 overflow-hidden rounded-md border border-gray-200">
                       <img
                         alt={product.name}
                         src={product.image}
