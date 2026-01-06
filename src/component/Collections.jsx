@@ -2,19 +2,19 @@ import collections from "./Assets/collection";
 
 export default function Collections() {
   return (
-    <section className="h-screen px-2 py-12 max-w-6xl mx-auto" id="trending">
+    <section className="h-screen px-2  max-w-6xl mx-5" id="trending">
       {/* Heading */}
-      <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold text-gray-800">
+      <div className="text-left mb-1 ">
+        <h2 className="text-2xl font-bold text-green-800 italic">
           Trending Collections
         </h2>
-        <p className="text-gray-500 mt-2">
+        <p className="text-gray-500 mt-1 ml-6">
           Explore our most popular collections
         </p>
       </div>
 
       {/* Collection Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         {collections.map((item) => (
           <div
             key={item.id}

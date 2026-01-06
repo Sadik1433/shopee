@@ -1,4 +1,3 @@
-// import Footer from "../component/Footer";\
 import FooterSection from "../component/FooterSection";
 import Home from "../component/Home";
 import Offers from "../component/Offers";

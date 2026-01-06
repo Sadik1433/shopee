@@ -29,7 +29,6 @@ export default function Home() {
         <div className="flex justify-center items-center">
           <img
             src={displyImage1}
-            // src="https://i.ibb.co/nMDCgHT/Group-37606.png"
             className="h-150"
             alt=""
           />

@@ -3,7 +3,6 @@ import all_product from "../Assets/all_product.js";
 
 export const ShopContext = createContext(null);
 
-// Default cart structure
 const DefaultCart = () => {
   let cart = {};
   for (let i = 0; i < all_product.length; i++) {

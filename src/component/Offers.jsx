@@ -4,7 +4,7 @@ import girlImage from "./Assets/display_4.png";
 export default function Offers() {
   return (
     <section id="offer"
-      className="h-screen px-0 py-12 "
+      className="h-screen px-0 py-2 "
     >
       <h2 className="text-4xl font-bold mb-8 text-blue-700 ml-9 ">Special Offers</h2>
       <div className="flex">
@@ -15,7 +15,7 @@ export default function Offers() {
           {offers.map((offer, index) => (
             <div
               key={index}
-              className="bg-white/10 backdrop-blur-md  max-w-[190px] h-[280px] text-white rounded-2xl p-6 shadow-lg flex flex-col justify-between  "
+              className={`${offer.bg}   max-w-[190px] h-[280px] text-white rounded-2xl p-6 shadow-lg flex flex-col justify-between `}
             >
               <div>
                 <h3 className="text-xl font-semibold">{offer.title}</h3>

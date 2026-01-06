@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Item = (props) => {
   return (
-    <div className="bg-transparent border-1 shadow hover:shadow-xl transition p-1 flex flex-col justify-between w-55 ">
+    <div className="bg-blue-200 border-1 shadow hover:shadow-xl transition p-1  w-55 rounded-md ">
       <Link to={`/product/${props.id}`}>
         <div className="relative">
           <img
@@ -11,7 +11,7 @@ const Item = (props) => {
             className="w-full h-60 object-cover rounded-md"
           />
         </div>
-        <div className="mt-px">
+        <div className="mt-px truncate py-2">
           <div className="font-bold text-md text-center text-blue-700">
             <span>{props.name}</span>
             <hr />
@@ -24,9 +24,6 @@ const Item = (props) => {
               ₹{props.actual}
             </span>
             <span className="text-green-500 px-3">★ {props.rating}</span>
-          </div>
-          <div className="flex text-gray-500 text-center mt-1">
-            <span>{props.description}</span>
           </div>
         </div>
       </Link>

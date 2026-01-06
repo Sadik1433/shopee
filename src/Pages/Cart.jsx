@@ -6,14 +6,14 @@ import { useState, useContext } from "react";
 const Cart = () => {
   const [selectedProduct, setSelectedProduct] = useState("new Message");
   const { all_product, cartItems, removeFromCart, getTotalCartAmount } = useContext(ShopContext);
-
+  
   const onSelected = (p) => {
     setSelectedProduct(p);
   };
+
   return (
     <div>
-      <div className="h-screen flex gap-2  p-4">
-        {/* LEFT */}
+      <div className="bg-sky-100 min-h-screen w-screen  flex gap-2  p-4">
         <CartList
           all_product={all_product}
           cartItems={cartItems}
@@ -21,9 +21,8 @@ const Cart = () => {
           onSelect={onSelected}
           getTotalCartAmount={getTotalCartAmount}
         />
-
-        {/* RIGHT */}
-        <ProductDetails product={selectedProduct} />
+        
+        <ProductDetails cartItems={cartItems} product={selectedProduct} />
       </div>
     </div>
   );

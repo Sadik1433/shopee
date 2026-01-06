@@ -7,10 +7,10 @@ const TrendingCollection = () => {
     .slice(0, 10); // pick first 10
 
   return (
-    <div className="h-screen  my-10  mr-10">
+    <div className="h-screen   mr-10">
       <div className="container py-2">
         <div className="">
-          <h1 className="text-4xl font-bold p-4">Trending Collections</h1>
+          <h1 className="text-4xl font-bold p-4">Trending Collection</h1>
         </div>
         <ul className="bg-slate-50 flex gap-4 overflow-x-auto  p-4 scrollbar-hide">
           {trending_products.map((card, i) => (

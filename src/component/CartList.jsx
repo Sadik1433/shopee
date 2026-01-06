@@ -1,5 +1,5 @@
 
-export default function CartList({onSelect, all_product, cartItems,getTotalCartAmount}) {
+export default function CartList({onSelect, all_product, cartItems,removeFromCart, getTotalCartAmount}) {
   
   return (
     <div className="flex  justify-center ">
@@ -9,7 +9,7 @@ export default function CartList({onSelect, all_product, cartItems,getTotalCartA
         <span>Total Amount . {getTotalCartAmount()}</span>
       </div>
         <div className="flow-root">
-          <ul role="list" className=" h-full py-2  overflow-y-auto scroll-hide  ">
+          <ul role="list" className=" h-full py-2  overflow-y-auto scroll-hide c ">
             {all_product.map((product) => {
               if (cartItems[product.id] > 0) {
                 return (
