@@ -28,7 +28,7 @@ const AppRouter = () => {
         />
         <Route
           path="/electro"
-          element={<ProductCategory category="electro" banner={banner_kids} />}
+          element={<ProductCategory category="electronics" banner={banner_kids} />}
         />
         <Route path="/product" element={<Display />}>
           <Route path=":productId" element={<Display />} />

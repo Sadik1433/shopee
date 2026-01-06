@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Item = (props) => {
   return (
-    <div className="bg-blue-200 border-1 shadow hover:shadow-xl transition p-1  w-55 rounded-md ">
+    <div className="bg-blue-200 border-1 shadow hover:shadow-xl transition p-1 min-w-[210px] max-w-[200px] rounded-md ">
       <Link to={`/product/${props.id}`}>
         <div className="relative">
           <img
@@ -11,7 +11,7 @@ const Item = (props) => {
             className="w-full h-60 object-cover rounded-md"
           />
         </div>
-        <div className="mt-px truncate py-2">
+        <div className="truncate py-2">
           <div className="font-bold text-md text-center text-blue-700">
             <span>{props.name}</span>
             <hr />
