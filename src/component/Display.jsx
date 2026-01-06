@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ShopContext } from "./context/ShopContext.jsx";
+import TrendingCollection from "./TrendingCollections.jsx";
+import FooterSection from "./FooterSection.jsx";
 
 export const sizes = ["S", "M", "L", "XL", "XXL"];
 
@@ -22,40 +24,62 @@ import {
 const Display = () => {
   const { all_product, addToCart } = useContext(ShopContext);
   const { productId } = useParams();
-  const product = all_product.find((item) => item.id === Number(productId));
   const [isFavorite, setIsFavorite] = useState(false);
+  const product = all_product.find((item) => item.id === Number(productId));
   const [selectedSize, setSelectedSize] = useState("8");
   const [selectedColor, setSelectedColor] = useState("Royal Brown");
+
   return (
     <div className="relative top-16  h-screen py-2 px-2">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2  md:gap-5">
         {/* Image Section */}
-        <div className="relative ">
+        <div className="flex w-[550px] border-r px-2 py-4 ">
+          <div className="flex flex-col w-30 mt-7 ">
+            <img
+              src={product.image}
+              alt="image1"
+              className="max-w-40px  object-cover aspect-square rounded-md mt-3"
+            />
+            <img
+              src={product.image}
+              alt="image1"
+              className="max-w-40px  object-cover aspect-square rounded-md mt-3   "
+            />
+            <img
+              src={product.image}
+              alt="image1"
+              className="max-w-40px  object-cover aspect-square rounded-md mt-3"
+            />
+            <img
+              src={product.image}
+              alt="image1"
+              className="max-w-40px  object-cover aspect-square rounded-md mt-3  "
+            />
+          </div>
           <div className="flex">
-            <div className="flex items-center justify-center w-[80%] dark:bg-slate-900 bg-gray-100 overflow-hidden rounded-md">
+            <div className="relative top-10  px-5  overflow-hidden rounded-md">
               <img
                 src={product.image}
                 alt="Product view"
-                className="w-[300px] h-[400px] object-cover"
+                className="h-[480px] object-cover border-blue-200  rounded-md"
               />
             </div>
-            <div className="flex flex-col justify-between gap-[15px] ml-[20px]">
-              <div className="flex flex-col gap-[10px]">
-                <button className="bg-gray-100 dark:bg-slate-900 dark:text-[#abc2d3] dark:hover:bg-slate-800 rounded-md w-max text-gray-600 p-2.5 hover:bg-gray-200">
-                  <IoShareSocialOutline className="w-5 h-5" />
-                </button>
-
-                <button
-                  className="bg-gray-100 dark:bg-slate-900 dark:text-[#abc2d3] dark:hover:bg-slate-800 rounded-md w-max text-gray-600 p-2.5 hover:bg-gray-200"
-                  onClick={() => setIsFavorite(!isFavorite)}
-                >
-                  {isFavorite ? (
-                    <IoHeart className="w-5 h-5 text-red-500" />
-                  ) : (
-                    <IoHeartOutline className="w-5 h-5" />
-                  )}
-                </button>
-              </div>
+          </div>
+          <div className="flex flex-col justify-between gap-[15px] ml-[20px]">
+            <div className="flex flex-col gap-[10px]">
+              <button className="rounded-md w-max text-gray-600 p-2.5 ">
+                <IoShareSocialOutline className="w-5 h-5" />
+              </button>
+              <button
+                className="rounded-md w-max text-gray-600 p-2.5 "
+                onClick={() => setIsFavorite(!isFavorite)}
+              >
+                {isFavorite ? (
+                  <IoHeart className="w-5 h-5 text-red-500" />
+                ) : (
+                  <IoHeartOutline className="w-5 h-5" />
+                )}
+              </button>
             </div>
           </div>
         </div>
@@ -178,6 +202,7 @@ const Display = () => {
           </div>
         </div>
       </div>
+      <FooterSection />
     </div>
   );
 };

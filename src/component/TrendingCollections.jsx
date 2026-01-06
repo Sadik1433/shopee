@@ -1,33 +1,32 @@
-import all_product from "./Assets/all_product.js";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ShopContext } from "./context/ShopContext.jsx";
+import Item from "./Item/Item.jsx";
 
-const TrendingCollection = () => {
-  const trending_products = [...all_product]
-    .sort(() => Math.random() - 0.5) // shuffle randomly
-    .slice(0, 10); // pick first 10
-
+const TrendingCollection = (props) => {
+  const { all_product } = useContext(ShopContext);
   return (
-    <div className="h-screen   mr-10">
-      <div className="container py-2">
-        <div className="">
-          <h1 className="text-4xl font-bold p-4">Trending Collection</h1>
+    <div className="mr-10 ml-5 ">
+      <div className="container">
+        <div className="bg-blue-200">
+          <h1 className="text-4xl ml-9 font-bold p-4 text-blue-900 ">{props.badge} Collections</h1>
         </div>
-        <ul className="bg-slate-50 flex gap-4 overflow-x-auto  p-4 scrollbar-hide">
-          {trending_products.map((card, i) => (
-            <Link to={`/${card.category}`}>
-              <li
-                key={i}
-                className="min-w-[250px] border-6 border-blue-900 rounded p-1"
-              >
-                <img
-                  src={card.image}
-                  alt={card.name}
-                  className="w-full h-80 object-cover rounded"
+        <ul className="flex gap-4 overflow-x-auto  px-4 py-8 scrollbar-hide">
+          {all_product.map((item, i) => {
+            if (item.badge === props.badge && item.category === props.category)
+              return (
+                <Item
+                  key={i}
+                  id={item.id}
+                  name={item.name}
+                  image={item.image}
+                  description={item.description}
+                  price={item.price}
+                  actual={item.actualPrice}
+                  rating={item.rating}
+                  badge={item.badge}
                 />
-                <div className="bg-blue-600">{card.rating}</div>
-              </li>
-            </Link>
-          ))}
+              );
+          })}
         </ul>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import FooterSection from "./FooterSection.jsx";
 import Item from "./Item/Item.jsx";
 import { useContext, useState } from "react";
+import TrendingCategory from "./TrendingCollections.jsx"
 import { ShopContext } from './context/ShopContext.jsx'
 
 const ProductCategory = (props) => {
@@ -55,7 +56,7 @@ const ProductCategory = (props) => {
           className="size-full object-cover"
         />
       </div>
-      <div className="mt-2 pl-10 grid  gap-y-5 sm:grid-cols-3 lg:grid-cols-5 xl:gap-x-0 ">
+      <div className="mt-2 pl-6 grid  gap-y-5 sm:grid-cols-3 lg:grid-cols-5 pb-20 ml-4"> 
         {filteredAndSortedProducts.map((item, i) => {
           if (item.category === props.category)
             return (
@@ -73,6 +74,10 @@ const ProductCategory = (props) => {
             );
         })}
       </div>
+      <TrendingCategory badge="New" category={props.category} />
+      <TrendingCategory badge="Trending" category={props.category}/>
+      <TrendingCategory badge="Best Seller" category={props.category}/>
+      <TrendingCategory badge="Popular" category={props.category}/>
       <FooterSection />
     </div>
   );
