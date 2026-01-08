@@ -30,7 +30,7 @@ const Display = () => {
   const [selectedColor, setSelectedColor] = useState("Royal Brown");
 
   return (
-    <div className="relative top-16  h-screen py-2 px-2">
+    <div className="relative top-16 py-2 px-2">
       <div className="grid grid-cols-1 md:grid-cols-2  md:gap-5">
         {/* Image Section */}
         <div className="flex w-[550px] border-r px-2 py-4 ">
