@@ -34,9 +34,9 @@ const ProductCategory = (props) => {
 
 
   return (
-    <div className="bg-sky-100 relative top-15 right-5 bottom-0 max-w-1xl lg:max-w-7xl pr-2 ">
+    <div className="bg-[#A8F1FF] relative top-15  bottom-0  pr-2 ">
       <div className="relative w-full bg-red-300 sticky top-16 z-10 flex items-center">
-        <div className="absolute right-10 top-3 text-1xl font-bold">
+        <div className="absolute right-12 top-3 text-1xl font-bold">
           <select
             className="border px-4 py-2 rounded text-black"
             onChange={(e) => setSortBy(e.target.value)}
@@ -56,7 +56,7 @@ const ProductCategory = (props) => {
           className="size-full object-cover"
         />
       </div>
-      <div className="mt-2 pl-6 grid  gap-y-5 sm:grid-cols-3 lg:grid-cols-5 pb-20 ml-4"> 
+      <div className="mt-2  grid  gap-y-5 sm:grid-cols-3 lg:grid-cols-5 pb-20"> 
         {filteredAndSortedProducts.map((item, i) => {
           if (item.category === props.category)
             return (

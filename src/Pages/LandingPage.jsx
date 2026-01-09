@@ -7,7 +7,7 @@ import Collections from "../component/Collections";
 const LandingPage = () => {
 
   return (
-    <div className="min-h-screen bg-sky-100 w-screen relative top-16 pr-2">
+    <div className="min-h-screen w-full pt-16 pr-2  text-gray-200 overflow-x-hidden">
       <Home />
       <Offers />
       <Collections />

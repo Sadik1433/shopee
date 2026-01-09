@@ -9,7 +9,7 @@ const App = () => {
     <>
       <Navbar />
       <ScrollToTop />
-      <div className="app-container ">
+      <div className="app-container bg-[#4988C4] ">
         <div className="flex relative">
           <SideBar />
           <AppRouter />

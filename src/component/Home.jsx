@@ -4,7 +4,7 @@ import { FaArrowRight } from "react-icons/fa";
 export default function Home() {
   return (
     <section id="home">
-      <div className="flex flex-col lg:flex-row">
+      <div className="flex flex-col lg:flex-row ">
         <div className="flex items-center justify-center gap-3">
           <div className="relative  gap-4 p-5">
             <div className="absolute top-1/3  -right-4 ">
@@ -14,10 +14,10 @@ export default function Home() {
                 alt=""
               />
             </div>
-            <h1 className="text-5xl text-black justify-start font-[Gilroy] py-2">
+            <h1 className="text-5xl text-[#B6F500] justify-start font-[Gilroy] py-2">
               Feel luxurious with premium quality outfits
             </h1>
-            <p className="text-black py-4">
+            <p className="text-[#B1F0F7] py-4">
               With so much demand for a style of board where every aspect of it
               flews, we created a new series
             </p>

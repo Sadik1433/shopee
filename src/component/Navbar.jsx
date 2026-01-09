@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { ShopContext } from "./context/ShopContext.jsx";
 import { Link as ScrollLink} from "react-scroll";
 import { useLocation, Link } from "react-router-dom";
-
+import { IoSearch } from "react-icons/io5";
 const Navbar = () => {
   const [search, setSearch] = useState("");
   const { all_product } = useContext(ShopContext);
@@ -28,18 +28,18 @@ const Navbar = () => {
         <div className="flex-1">
           <a className="btn btn-ghost text-xl">Shopee</a>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="fixed top-4 left-1/2  w-52">
           <input
             type="text"
             placeholder="Search ..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 outline-none border-b-1 border-white text-white"
           />
         </div>
         {/* search input display box */}
         {search && (
-          <div className="bg-white absolute top-14 left-130 text-blue-900 border mt-2 max-h-60 overflow-y-auto w-84">
+          <div className="bg-white absolute top-14 left-158 text-blue-900 border mt-2 max-h-60 overflow-y-auto w-60">
             {filteredProducts.length > 0 ? (
               filteredProducts.map((product) => (
                 <Link
@@ -62,8 +62,8 @@ const Navbar = () => {
         )}
         {/* hide navbar on specific routes  */}
         {shouldHideNavbar && (
-          <div className="flex-1">
-            <ul className="flex justify-around">
+          <div className="flex-1 cursor-pointer">
+            <ul className="flex justify-end gap-18">
               <ScrollLink
                 to="home"
                 spy={true}

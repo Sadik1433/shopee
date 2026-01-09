@@ -4,10 +4,10 @@ import { LiaAccusoft } from "react-icons/lia";
 
 const SideBar = () => {
   return (
-    <div className="drawer drawer-open  z-1000  w-10 h-screen fixed top-0 left-0">
+    <div className=" drawer drawer-open  z-1000  w-10 h-screen fixed top-0 left-0">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-side is-drawer-close:overflow-hidden">
-        <div className="is-drawer-close:w-12 is-drawer-open:w-40 bg-blue-100 flex flex-col items-start relative top-16 text-black ">
+        <div className="bg-white/10 backdrop-blur  is-drawer-close:w-12 is-drawer-open:w-40 flex flex-col items-start relative top-16 text-white">
           <h6 className="py-3 px-3  gap-2 font-bold text-lg">
             <LiaAccusoft size={28} />
           </h6>
