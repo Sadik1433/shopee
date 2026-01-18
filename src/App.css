@@ -5,6 +5,7 @@ body {
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  background-image: linear-gradient(to top right, #f0fff8, #cffde9);
 }
 
 body::-webkit-scrollbar {

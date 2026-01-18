@@ -14,14 +14,14 @@ export default function Home() {
                 alt=""
               />
             </div>
-            <h1 className="text-5xl text-[#B6F500] justify-start font-[Gilroy] py-2">
+            <h1 className="text-5xl text-[#0d1b97] justify-start font-[Gilroy] py-2">
               Feel luxurious with premium quality outfits
             </h1>
-            <p className="text-[#B1F0F7] py-4">
+            <p className="text-[#081056] py-4">
               With so much demand for a style of board where every aspect of it
               flews, we created a new series
             </p>
-            <button className="btn flex flex-row justify-items-start  bg-[#33644A] px-4 py-4 rounded-xl text-white ">
+            <button className="btn flex flex-row justify-items-start  bg-[#DC0000] px-4 py-4 rounded-xl text-white border-none ">
               Explore Now <FaArrowRight className=" text-2xl p-1" />
             </button>
           </div>

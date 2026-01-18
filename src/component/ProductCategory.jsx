@@ -34,8 +34,8 @@ const ProductCategory = (props) => {
 
 
   return (
-    <div className="bg-[#A8F1FF] relative top-15  bottom-0  pr-2 ">
-      <div className="relative w-full bg-red-300 sticky top-16 z-10 flex items-center">
+    <div className="relative top-15">
+      <div className="relative w-full sticky top-16 z-10 flex items-center">
         <div className="absolute right-12 top-3 text-1xl font-bold">
           <select
             className="border px-4 py-2 rounded text-black"
@@ -49,14 +49,14 @@ const ProductCategory = (props) => {
           </select>
         </div>
       </div>
-      <div className="p-1">
+      <div>
         <img
           src={props.banner}
           alt="banner Image"
           className="size-full object-cover"
         />
       </div>
-      <div className="mt-2  grid  gap-y-5 sm:grid-cols-3 lg:grid-cols-5 pb-20"> 
+      <div className="gap-y-5 grid sm:grid-cols-3 lg:grid-cols-5  py-3 px-4"> 
         {filteredAndSortedProducts.map((item, i) => {
           if (item.category === props.category)
             return (
