@@ -1,11 +1,45 @@
 
+:root {
+  --bg-color: #f4fbfa;
+  --navbar-bg-color: #e6f5f3;
+  --card-color: #ffffff;
+  --input-color: #dff3f1;
+
+  --text-color: #1f3d3a;
+  /* --heading-color:#0d1b97; */
+  --heading-color: #0f766e;
+
+  --btn-color: rgba(20, 184, 166, 0.85);
+  --btn-hover-color: #0d9488;
+  --button-text-color: #ffffff;
+
+  --shadow: rgba(15, 118, 110, 0.25);
+}
+
+[data-theme="dark"] {
+  --bg-color: #0f172a;
+  --navbar-bg-color: #020617;
+  --card-color: #1e293b;
+  --input-color: #334155;
+
+  --text-color: #e5e7eb;
+  --heading-color: #5eead4;
+
+  --btn-color: rgba(251, 113, 133, 0.85);
+  --btn-hover-color: #fb7185;
+  --button-text-color: #020617;
+  --shadow: rgba(94, 234, 212, 0.35);
+}
+
+
 body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
   height: min-content;
   overflow: hidden;
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  background-image: linear-gradient(to top right, #f0fff8, #cffde9);
 }
 
 body::-webkit-scrollbar {
@@ -20,7 +54,7 @@ body::-webkit-scrollbar {
   scrollbar-width: none;
 }
 
-.active{
+.active {
   background: transparent;
-  border-bottom: 2px solid #2563EB;
+  border-bottom: 2px solid #2563eb;
 }

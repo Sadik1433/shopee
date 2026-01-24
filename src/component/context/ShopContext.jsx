@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import all_product from "../Assets/all_product.js";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const ShopContext = createContext(null);
 
 const DefaultCart = () => {

@@ -2,21 +2,21 @@ import display5 from "./Assets/display_5.png";
 
 export default function About() {
   return (
-    <section className="h-screen text-[#081056]  px-6 py-5 flex" id="about">
+    <section className="h-screen text-[var(--navbar-bg-color)  px-6 py-5 flex" id="about">
       <div className="flex max-w-6xl  w-full ">
         <div className="w-[400px]">
           <img src={display5} className="" alt="" />
         </div>
         <div className="flex flex-col gap-9">
            <div className="">
-            <h2 className="text-4xl text-center font-bold text-[#0d1b97] mb-9">About Shopee</h2>
+            <h2 className="text-4xl text-center font-bold text-[var(--heading-color)] mb-9">About Shopee</h2>
             <p className="text-center mt-3 max-w-2xl mx-auto">
               We are a modern e-commerce platform bringing you quality products,
               trending collections, and a seamless shopping experience.
             </p>
           </div>
           <div className="">
-            <h3 className="text-xl font-semibold text-[#0d1b97] mb-2">
+            <h3 className="text-xl font-semibold text-[var(--heading-color)] mb-2">
               Who We Are
             </h3>
             <p className="text-sm leading-relaxed">
@@ -25,7 +25,7 @@ export default function About() {
             </p>
           </div>
           <div className="">
-            <h3 className="text-xl font-semibold text-[#0d1b97] mb-2">
+            <h3 className="text-xl font-semibold text-[var(--heading-color)] mb-2">
               What We Offer
             </h3>
             <p className="text-sm leading-relaxed">
@@ -35,7 +35,7 @@ export default function About() {
           </div>
 
           <div className="">
-            <h3 className="text-xl font-semibold text-[#0d1b97] mb-2">
+            <h3 className="text-xl font-semibold text-[var(--heading-color)] mb-2">
               Why Choose Us
             </h3>
             <p className="text-sm leading-relaxed">
@@ -44,7 +44,7 @@ export default function About() {
             </p>
           </div>
           <div className="">
-            <h3 className="text-xl font-semibold text-[#0d1b97] mb-2">
+            <h3 className="text-xl font-semibold text-[var(--heading-color)] mb-2">
               Our Vision
             </h3>
             <p className=" text-sm leading-relaxed">

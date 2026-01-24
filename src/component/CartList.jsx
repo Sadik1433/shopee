@@ -1,15 +1,19 @@
-
-export default function CartList({onSelect, all_product, cartItems,removeFromCart, getTotalCartAmount}) {
-  
+export default function CartList({
+  onSelect,
+  all_product,
+  cartItems,
+  removeFromCart,
+  getTotalCartAmount,
+}) {
   return (
-    <div className="flex  justify-center ">
-      <div className="w-[500px] relative top-10 shadow-lg py-2 m-4">
-      <div className="bg-blue-900 border-1 text-white p-2 flex justify-between">
-        <h1 className="text-xl">CartItems</h1>
-        <span>Total Amount . {getTotalCartAmount()}</span>
-      </div>
+    <div className="flex  justify-center">
+      <div className="w-[500px] relative top-8 shadow-lg py-2 m-4">
+        <div className="text-[var(--heading-color)] sticky top-16 bg-transparent backdrop-blur border-1  p-2 flex justify-between">
+          <h1 className="text-xl">CartItems</h1>
+          <span>Total Amount . {getTotalCartAmount()}</span>
+        </div>
         <div className="flow-root">
-          <ul role="list" className=" h-full py-2  overflow-y-auto scroll-hide c ">
+          <ul role="list" className="h-full py-2 overflow-y-auto scroll-hide">
             {all_product.map((product) => {
               if (cartItems[product.id] > 0) {
                 return (
@@ -28,7 +32,7 @@ export default function CartList({onSelect, all_product, cartItems,removeFromCar
 
                     <div className="ml-4 flex flex-1 flex-col">
                       <div>
-                        <div className="flex justify-between text-base font-medium text-gray-900">
+                        <div className="flex justify-between text-base font-medium  text-[var(--text-color)]">
                           <h3>{product.name}</h3>
                           <p className="ml-4">{product.price}</p>
                         </div>

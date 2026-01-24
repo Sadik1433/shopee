@@ -1,17 +1,28 @@
 import { Link } from "react-router-dom";
 import { RiSidebarFoldLine } from "react-icons/ri";
 import { LiaAccusoft } from "react-icons/lia";
+import { FaSun, FaMoon } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 const SideBar = () => {
+  const [theme, setTheme] = useState("light");
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
+
   return (
-    <div className="text-[#081056] drawer text-[#0d1b97] drawer-open  z-10  w-10 h-screen fixed top-0 left-0">
+    <div className="drawer  drawer-open  z-10  w-10 h-screen fixed top-0 left-0 bottom-0 bg-[var(--navbar-bg-color) text-[var(--text-color) ]">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-side is-drawer-close:overflow-hidden border-r-1 ">
-        <div className="bg-white/10 backdrop-blur  is-drawer-close:w-12 is-drawer-open:w-40 flex flex-col items-start relative top-16 text-white">
+      <div className="drawer-side border-r-1  is-drawer-close:overflow-hidden">
+        <div className="backdrop-blur  is-drawer-close:w-12 is-drawer-open:w-40 flex flex-col items-start relative top-16 ">
           <h6 className="py-3 px-3  gap-2 font-bold text-lg">
             <LiaAccusoft size={28} />
           </h6>
-          <ul className="menu font-bold text-[#1327d8] text-lg w-full px-0 py-4.5">
+          <ul className="menu font-bold text-lg w-full px-0 py-4.5">
             <li className="py-3">
               <Link to="/">
                 <span className="pr-2">H</span>
@@ -53,10 +64,10 @@ const SideBar = () => {
               </Link>
             </li>
             <li className="py-2">
-              <Link to="/settings">
-                <span className="pr-2">S</span>
-                <span className="is-drawer-close:hidden">Settings</span>
-              </Link>
+              <button onClick={toggleTheme} className="toggle-theme">
+                {theme === "light" ? <FaMoon /> : <FaSun />}
+                <span className="is-drawer-close:hidden">Theme</span>
+              </button>
             </li>
           </ul>
           <div className="px-2 py-1 font-bold text-lg">

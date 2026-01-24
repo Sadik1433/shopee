@@ -17,11 +17,11 @@ export default function Home() {
             <h1 className="text-5xl text-[#0d1b97] justify-start font-[Gilroy] py-2">
               Feel luxurious with premium quality outfits
             </h1>
-            <p className="text-[#081056] py-4">
+            <p className="text-[var(--text-color)] py-4">
               With so much demand for a style of board where every aspect of it
               flews, we created a new series
             </p>
-            <button className="btn flex flex-row justify-items-start  bg-[#DC0000] px-4 py-4 rounded-xl text-white border-none ">
+            <button className="btn flex flex-row justify-items-start  bg-[var(--btn-color)]  px-4 py-4 rounded-xl text-white border-none ">
               Explore Now <FaArrowRight className=" text-2xl p-1" />
             </button>
           </div>

@@ -1,10 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext, useState} from "react";
 import { ShopContext } from "./context/ShopContext.jsx";
-import { Link as ScrollLink} from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
 import { useLocation, Link } from "react-router-dom";
-import { IoSearch } from "react-icons/io5";
+
 const Navbar = () => {
   const [search, setSearch] = useState("");
+
   const { all_product } = useContext(ShopContext);
 
   // seach filter product
@@ -12,7 +13,7 @@ const Navbar = () => {
   const filteredProducts = all_product.filter(
     (product) =>
       product.name.toLowerCase().includes(search.toLowerCase()) ||
-      product.category.toLowerCase().includes(search.toLowerCase())
+      product.category.toLowerCase().includes(search.toLowerCase()),
   );
 
   // hide navbar on specific routes
@@ -23,19 +24,18 @@ const Navbar = () => {
   const shouldHideNavbar = hideNavbarRoutes.includes(location.pathname);
 
   return (
-    <div>
-      <div className="navbar fixed top-0 right-0 z-12 bg-blue-950">
+      <div className="navbar fixed top-0 right-0 z-100 backdrop-blur bg-[var(--navbar-bg-color) text-[var(--text-color) ] shadow-[0_1px_9px_var(--shadow)] ">
         <div className="flex-1">
           <a className="btn btn-ghost text-xl">Shopee</a>
         </div>
-        <div className="fixed top-4 left-1/2  w-52">
+        <div className="fixed top-4 left-1/3  w-60">
           <input
             type="text"
             placeholder="Search ..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full px-4 py-2 outline-none border-b-1 border-white text-white"
-          />
+            className="w-full px-4 py-2 outline-none border-b-1 border-l-1 rounded border-[var(--icon-color)  text-[var(--input-color) ]"
+          /> 
         </div>
         {/* search input display box */}
         {search && (
@@ -62,7 +62,7 @@ const Navbar = () => {
         )}
         {/* hide navbar on specific routes  */}
         {shouldHideNavbar && (
-          <div className="flex-1 cursor-pointer">
+          <div className="flex-1 cursor-pointer px-5">
             <ul className="flex justify-end gap-18">
               <ScrollLink
                 to="home"
@@ -108,7 +108,6 @@ const Navbar = () => {
           </div>
         )}
       </div>
-    </div>
   );
 };
 

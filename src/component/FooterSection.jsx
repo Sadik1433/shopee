@@ -1,10 +1,10 @@
 export default function Footer() {
   return (
     <footer className="mt-16">
-      <div className="text-[#081056] max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="text-[var(--text-color)] max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Brand */}
         <div>
-          <h2 className="text-2xl font-bold text-[#0d1b97] mb-3">Shopee</h2>
+          <h2 className="text-2xl font-bold text-[var(--heading-color)] mb-3">Shopee</h2>
           <p className="text-sm leading-relaxed ">
             Discover premium quality outfits and trending collections
             curated just for you.
@@ -13,7 +13,7 @@ export default function Footer() {
 
         {/* Quick Links */}
         <div>
-          <h3 className="text-lg font-semibold text-[#0d1b97] mb-3">
+          <h3 className="text-lg font-semibold text-[var(--heading-color)] mb-3">
             Quick Links
           </h3>
           <ul className="space-y-2 text-sm">
@@ -26,7 +26,7 @@ export default function Footer() {
 
         {/* Customer Service */}
         <div>
-          <h3 className="text-lg font-semibold text-[#0d1b97] mb-3">
+          <h3 className="text-lg font-semibold text-[var(--heading-color)] mb-3">
             Customer Service
           </h3>
           <ul className="space-y-2 text-sm">
@@ -39,7 +39,7 @@ export default function Footer() {
 
         {/* Newsletter */}
         <div>
-          <h3 className="text-lg font-semibold text-[#0d1b97] mb-3">
+          <h3 className="text-lg font-semibold text-[var(--heading-color)] mb-3">
             Subscribe
           </h3>
           <p className="text-sm mb-3">

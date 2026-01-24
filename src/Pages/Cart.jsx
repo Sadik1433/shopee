@@ -13,7 +13,7 @@ const Cart = () => {
 
   return (
     <div>
-      <div className="bg-sky-100 min-h-screen w-screen  flex gap-2  p-4">
+      <div className="min-h-screen w-screen  flex gap-2  p-4">
         <CartList
           all_product={all_product}
           cartItems={cartItems}

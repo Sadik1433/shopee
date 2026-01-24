@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Item = (props) => {
   return (
-    <div className="bg-blue-200 border-1 shadow hover:shadow-xl transition p-1 min-w-[210px] max-w-[200px] rounded-md ">
+    <div className="bg-[var(--card-color) backdrop-blur border-1 shadow hover:shadow-xl transition p-1 min-w-[210px] max-w-[200px] rounded-md ">
       <Link to={`/product/${props.id}`}>
         <div className="relative">
           <img

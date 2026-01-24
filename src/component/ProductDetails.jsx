@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 const ProductDetails = ({ product, cartItems }) => {
   if (!product || cartItems.length === 0 ) {
     return (
-      <div className="h-screen w-[500px]  flex items-center justify-center text-gray-500">
-        Select a product to see details
+      <div className="h-screen w-[500px]  flex items-center justify-center text-[var(--heading-color)]">
+        Select a product to see details.
       </div>
     );
   }
 
   return (
-    <div className="sm: opacity-0 w-[600px] h-fit  relative top-16  border-1 rounded shadow lg:opacity-100 ">
-      <h2 className="text-2xl font-bold mb-4 border-b-1 bg-blue-900 p-2 ">Product Details</h2>
+    <div className="sm:opacity-0 w-[600px] h-fit fixed top-20 right-10 border-1 rounded shadow lg:opacity-100 ">
+      <h2 className="text-2xl font-bold mb-4 border-b-1 text-[var(--heading-color)] p-2 ">Product Details</h2>
       <div className="flex gap-3 p-2">
         <div>
           <img
