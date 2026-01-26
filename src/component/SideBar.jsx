@@ -80,14 +80,15 @@ const SideBar = () => {
             </Link>
           </div>
           <div
-            className="is-drawer-close:tooltip is-drawer-close:tooltip-right py-4 px-1"
-            data-tip="Open"
+            className="is-drawer-close:tooltip is-drawer-close:tooltip-right py-4 px-2"
+            // data-tip="Open"
           >
             <label
               htmlFor="my-drawer-4"
-              className="btn btn-primary btn-circle drawer-button is-drawer-open:rotate-y-180"
+              className="drawer-button is-drawer-open:rotate-y-180"
             >
               <RiSidebarFoldLine size={28} />
+              
             </label>
           </div>
         </div>
