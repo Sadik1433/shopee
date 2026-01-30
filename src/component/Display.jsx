@@ -2,12 +2,11 @@ import { useState } from "react";
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ShopContext } from "./context/ShopContext.jsx";
-import TrendingCollection from "./TrendingCollections.jsx";
 import FooterSection from "./FooterSection.jsx";
 
-export const sizes = ["S", "M", "L", "XL", "XXL"];
+const sizes = ["S", "M", "L", "XL", "XXL"];
 
-export const colors = [
+ const colors = [
   { name: "Royal Brown", class: "bg-[#654321]" },
   { name: "Light Gray", class: "bg-gray-200" },
   { name: "Steel Blue", class: "bg-[#4682B4]" },
@@ -22,16 +21,15 @@ import {
 } from "react-icons/io5";
 
 const Display = () => {
-  const { all_product, addToCart } = useContext(ShopContext);
+  const { all_product, addToCart, setIsFavorite,isFavorite } = useContext(ShopContext);
   const { productId } = useParams();
-  const [isFavorite, setIsFavorite] = useState(false);
   const product = all_product.find((item) => item.id === Number(productId));
   const [selectedSize, setSelectedSize] = useState("8");
   const [selectedColor, setSelectedColor] = useState("Royal Brown");
-
+  
   return (
-    <div className="min-h-screen bg-blue-50 relative top-16 ">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 ">
+    <div className="min-h-screen  relative top-16 ">
+      <div className="text-[var(--text-color)] grid grid-cols-1 md:grid-cols-2 gap-3 py-5 ">
         {/* Image Section */}
         <div className="flex w-[550px] border-r px-2 py-4 ">
           <div className="flex flex-col w-30 mt-7 ">
@@ -67,11 +65,11 @@ const Display = () => {
           </div>
           <div className="flex flex-col justify-between gap-[15px] ml-[20px]">
             <div className="flex flex-col gap-[10px]">
-              <button className="rounded-md w-max text-gray-600 p-2.5 ">
+              <button className="rounded-md w-max  p-2.5 ">
                 <IoShareSocialOutline className="w-5 h-5" />
               </button>
               <button
-                className="rounded-md w-max text-gray-600 p-2.5 "
+                className="rounded-md w-max  p-2.5 "
                 onClick={() => setIsFavorite(!isFavorite)}
               >
                 {isFavorite ? (
@@ -88,7 +86,7 @@ const Display = () => {
         <div className="flex flex-col relative right-15 ">
           <div className="flex justify-between items-start">
             <div className="w-full">
-              <p className="text-gray-400 dark:text-slate-400 text-[0.9rem]">
+              <p className="text-[0.9rem]">
                 Home / {product.category} / {product.name}
               </p>
               <h1 className="text-[1.6rem] dark:text-[#abc2d3] md:text-[1.8rem] text-gray-800 font-semibold mb-3">
@@ -202,7 +200,7 @@ const Display = () => {
           </div>
         </div>
       </div>
-      {/* <FooterSection /> */}
+      <FooterSection />
     </div>
   );
 };

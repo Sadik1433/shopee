@@ -21,6 +21,8 @@ const ShopContextProvider = ({ children }) => {
   };
 
   const [cartItems, setCartItems] = useState(getInitialCart);
+  
+  const [isFavorite, setIsFavorite] = useState(false);
 
   // 🔹 Save cart to localStorage whenever it changes
   useEffect(() => {
@@ -61,6 +63,8 @@ const ShopContextProvider = ({ children }) => {
   const contextValue = {
     all_product,
     cartItems,
+    isFavorite,
+    setIsFavorite,
     addToCart,
     removeFromCart,
     getTotalCartAmount,

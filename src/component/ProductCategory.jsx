@@ -6,7 +6,7 @@ import { ShopContext } from './context/ShopContext.jsx'
 
 const ProductCategory = (props) => {
   const [sortBy, setSortBy] = useState("sort");
-  const [search, setSearch] = useState("");
+  const [search] = useState("");
   const {all_product} = useContext(ShopContext);
 
   const filteredAndSortedProducts = all_product

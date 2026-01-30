@@ -5,7 +5,7 @@ import { FaSun, FaMoon } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
 const SideBar = () => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
