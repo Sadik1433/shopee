@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ShopContext } from "./context/ShopContext.jsx";
-import TrendingCollection from "./TrendingCollections.jsx";
 import FooterSection from "./FooterSection.jsx";
 
 export const sizes = ["S", "M", "L", "XL", "XXL"];
@@ -30,8 +29,8 @@ const Display = () => {
   const [selectedColor, setSelectedColor] = useState("Royal Brown");
 
   return (
-    <div className="min-h-screen bg-blue-50 relative top-16 ">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 ">
+    <div className="min-h-screen relative top-16 bg-[var(--bg-color)]">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3  py-4">
         {/* Image Section */}
         <div className="flex w-[550px] border-r px-2 py-4 ">
           <div className="flex flex-col w-30 mt-7 ">
@@ -202,7 +201,7 @@ const Display = () => {
           </div>
         </div>
       </div>
-      {/* <FooterSection /> */}
+      <FooterSection />
     </div>
   );
 };

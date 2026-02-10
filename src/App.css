@@ -1,12 +1,11 @@
 
 :root {
-  --bg-color: #f4fbfa;
+  --bg-color: #d7eff3b8;
   --navbar-bg-color: #e6f5f3;
   --card-color: #ffffff;
   --input-color: #dff3f1;
 
-  --text-color: #1f3d3a;
-  /* --heading-color:#0d1b97; */
+  --text-color: #3620db;
   --heading-color: #0f766e;
 
   --btn-color: rgba(20, 184, 166, 0.85);

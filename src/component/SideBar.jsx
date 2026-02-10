@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
-import { RiSidebarFoldLine } from "react-icons/ri";
-import { LiaAccusoft } from "react-icons/lia";
 import { FaSun, FaMoon } from "react-icons/fa";
+import { TfiMenu } from "react-icons/tfi";
+import { IoHome } from "react-icons/io5";
+import { MdOutlinePhoneIphone } from "react-icons/md";
+import { FaMale } from "react-icons/fa";
+import { FaFemale } from "react-icons/fa";
+import { FaChild } from "react-icons/fa";
+import { MdOutlineShoppingCart } from "react-icons/md";
 import { useEffect, useState } from "react";
 
 const SideBar = () => {
@@ -17,79 +22,74 @@ const SideBar = () => {
   return (
     <div className="drawer  drawer-open  z-10  w-10 h-screen fixed top-0 left-0 bottom-0 bg-[var(--navbar-bg-color) text-[var(--text-color) ]">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-side border-r-1  is-drawer-close:overflow-hidden">
-        <div className="backdrop-blur  is-drawer-close:w-12 is-drawer-open:w-40 flex flex-col items-start relative top-16 ">
-          <h6 className="py-3 px-3  gap-2 font-bold text-lg">
-            <LiaAccusoft size={28} />
-          </h6>
-          <ul className="menu font-bold text-lg w-full px-0 py-4.5">
-            <li className="py-3">
+      <div className="drawer-side border-r-1  is-drawer-close:overflow-hidden backdrop-blur bg-white/3 backdrop-blur-md">
+        <div className=" is-drawer-close:w-12 is-drawer-open:w-40 flex flex-col items-start relative top-16 ">
+          <div className="absolute top-5 left-3 cursor-pointer is-drawer-close:tooltip is-drawer-open:absolute right-12  py-2 px-0">
+            <label htmlFor="my-drawer-4">
+              <span>
+                <TfiMenu size={28} />
+
+              </span>
+            </label>
+          </div>
+          <ul className="absolute top-18 gap-5 menu font-bold text-lg w-full px-0  py-3">
+            <li>
               <Link to="/">
-                <span className="pr-2">H</span>
+                <span className="pr-2"><IoHome size={25} /></span>
                 <span className="is-drawer-close:hidden">Home</span>
               </Link>
             </li>
-            <li className="py-2">
+            <li>
               <Link to="/men">
-                <span className="pr-2">M</span>
+                <span className="pr-2"><FaMale size={25} /></span>
                 <span className="is-drawer-close:hidden">Men</span>
               </Link>
             </li>
-            <li className="py-2">
+            <li>
               <Link to="/women">
-                <span className="pr-2">W</span>
+                <span className="pr-2"><FaFemale size={25} /></span>
 
                 <span className="is-drawer-close:hidden">Women</span>
               </Link>
             </li>
-            <li className="py-2">
+            <li>
               <Link to="/kids">
-                <span className="pr-2">K</span>
+                <span className="pr-2"><FaChild size={25} /></span>
 
                 <span className="is-drawer-close:hidden">Home</span>
               </Link>
             </li>
 
-            <li className="py-2">
+            <li>
               <Link to="/electro">
-                <span className="pr-2">E</span>
+                <span className="pr-2"><MdOutlinePhoneIphone size={25} /></span>
 
                 <span className="is-drawer-close:hidden">Electronic</span>
               </Link>
             </li>
-            <li className="py-2">
+            <li>
               <Link to="/cart">
-                <span className="pr-2">C</span>
+                <span className="pr-2"><MdOutlineShoppingCart size={25} /></span>
                 <span className="is-drawer-close:hidden">Cart</span>
               </Link>
             </li>
-            <li className="py-2">
-              <button onClick={toggleTheme} className="toggle-theme">
-                {theme === "light" ? <FaMoon /> : <FaSun />}
+            <li>
+              <button onClick={toggleTheme} className="toggle-theme pr-2">
+                {theme === "light" ? <FaMoon size={25} /> : <FaSun size={25} />}
                 <span className="is-drawer-close:hidden">Theme</span>
               </button>
             </li>
+
+            <li className="py-1">
+              <Link to="/profile">
+                <img
+                  src="https://www.w3schools.com/howto/img_avatar.png"
+                  alt="avatar"
+                  className="w-5 h-5 rounded-full inline-block"
+                />
+              </Link>
+            </li>
           </ul>
-          <div className="px-2 py-1 font-bold text-lg">
-            <Link to="/profile">
-              <img
-                src="https://www.w3schools.com/howto/img_avatar.png"
-                alt="avatar"
-                className="w-8 h-8 rounded-full inline-block"
-              />
-            </Link>
-          </div>
-          <div
-            className="is-drawer-close:tooltip is-drawer-close:tooltip-right py-4 px-1"
-            data-tip="Open"
-          >
-            <label
-              htmlFor="my-drawer-4"
-              className="btn btn-primary btn-circle drawer-button is-drawer-open:rotate-y-180"
-            >
-              <RiSidebarFoldLine size={28} />
-            </label>
-          </div>
         </div>
       </div>
     </div>

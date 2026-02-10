@@ -6,7 +6,7 @@ export default function CartList({
   getTotalCartAmount,
 }) {
   return (
-    <div className="flex  justify-center">
+    <div className="flex  justify-center bg-[var(--bg-color)]">
       <div className="w-[500px] relative top-8 shadow-lg py-2 m-4">
         <div className="text-[var(--heading-color)] sticky top-16 bg-transparent backdrop-blur border-1  p-2 flex justify-between">
           <h1 className="text-xl">CartItems</h1>
