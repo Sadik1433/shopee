@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { ShopContext } from "./context/ShopContext.jsx";
 import { Link as ScrollLink } from "react-scroll";
 import { useLocation, Link } from "react-router-dom";
+import { SiShopee } from "react-icons/si";
 
 const Navbar = () => {
   const [search, setSearch] = useState("");
@@ -14,16 +15,16 @@ const Navbar = () => {
 
   const location = useLocation();
 
-  const hideNavbarRoutes = ["/"];
-
-  const shouldHideNavbar = hideNavbarRoutes.includes(location.pathname);
-
   return (
-    <div className="navbar fixed top-0 right-0 z-100 bg-[var(--navbar-bg-color)] backdrop-blur-md border-b border-[var(--border-color)] shadow-sm">
+    <div className="navbar max-h-[80px] fixed top-0 right-0 z-100 bg-[var(--navbar-bg-color)] backdrop-blur-md border-b border-[var(--border-color)] shadow-sm">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">Shopee</a>
+        <div className="">
+          <SiShopee className="inline-block text-3xl relative left-1 top-2" />
+          <br />
+          <span className="inline-block text-xl font-bold relative left-7  bottom-1 font-serif">Shopee</span>
+        </div>
       </div>
-      <div className="fixed top-4 left-1/3  w-60">
+      <div className="fixed top-4 left-64 w-100">
         <input
           type="text"
           placeholder="Search ..."
@@ -54,8 +55,8 @@ const Navbar = () => {
           )}
         </div>
       )}
-      <div className="flex-1 cursor-pointer px-5">
-        <ul className="flex justify-end gap-10 font-medium text-[var(--text-secondary)] py-2 items-center">
+      <div className="flex-1 cursor-pointer">
+        <ul className="flex justify-end gap-15 font-medium text-[var(--text-secondary)] py-2 items-center">
           {location.pathname === "/" && (
             <>
               <ScrollLink
@@ -117,7 +118,7 @@ const Navbar = () => {
               </div>
             ) : (
               <Link to="/login">
-                <button className="bg-[var(--btn-color)] text-white px-6 py-2 rounded-full font-bold hover:shadow-lg active:scale-95 transition-all ml-4">
+                <button className="cursor-pointer px-6 py-2 rounded-full font-bold hover:shadow-lg active:scale-95 transition-all ml-4">
                   Login
                 </button>
               </Link>

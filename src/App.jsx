@@ -9,14 +9,10 @@ const App = () => {
     <>
       <Navbar />
       <ScrollToTop />
-      <div className="app-container 
-      ">
-      {/* FCF8F8  */}
         <div className="flex relative">
           <SideBar />
           <AppRouter />
         </div>
-      </div>
     </>
   );
 };

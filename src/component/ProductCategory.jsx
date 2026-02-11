@@ -18,35 +18,35 @@ const ProductCategory = (props) => {
     })
     .sort((a, b) => {
       if (sortBy === "az") {
-        return a.name.localeCompare(b.name); // A → Z
+        return a.name.localeCompare(b.name); 
       }
       if (sortBy === "za") {
-        return b.name.localeCompare(a.name); // Z → A
+        return b.name.localeCompare(a.name); 
       }
       if (sortBy === "low") {
-        return a.price - b.price; // Low → High
+        return a.price - b.price; 
       }
       if (sortBy === "high") {
-        return b.price - a.price; // High → Low
+        return b.price - a.price; 
       }
       return 0;
     });
 
 
   return (
-    <div className="relative top-15">
-      <div className="max-w-[1250px]">
+    <div className="relative top-18 left-1"> 
+      <div className="max-w-[1230px]">
         <div className="relative sticky top-16 z-10 flex items-center">
-          <div className="absolute right-12 top-3 text-1xl font-bold">
+          <div className="absolute right-12 top-4 text-1xl font-bold">
             <select
-              className="border px-4 py-2 rounded text-black"
+              className="border border-white bg-transparent px-4 py-2 rounded"
               onChange={(e) => setSortBy(e.target.value)}
             >
-              <option value="">Filter</option>
-              <option value="az">Name: A → Z</option>
-              <option value="za">Name: Z → A</option>
-              <option value="low">Price: Low → High</option>
-              <option value="high">Price: High → Low</option>
+              <option value="" className="text-black">Filter</option>
+              <option value="az" className="text-black">Name: A → Z</option>
+              <option value="za" className="text-black">Name: Z → A</option>
+              <option value="low" className="text-black">Price: Low → High</option>
+              <option value="high" className="text-black">Price: High → Low</option>
             </select>
           </div>
         </div>

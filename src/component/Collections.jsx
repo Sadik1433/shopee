@@ -2,12 +2,12 @@ import collections from "./Assets/collection";
 
 export default function Collections() {
   return (
-    <section className="h-screen px-2  max-w-6xl mx-5" id="trending">
+    <section className="h-screen px-2 py-2 max-w-[1200px] relative left-1 " id="trending">
       <div className="mb-2">
-        <h2 className="text-3xl font-bold text-[var(--heading-color)] italic">
+        <h2 className="text-3xl font-bold mb-4 text-[var(--heading-color)] italic">
           Trending Collections
         </h2>
-        <p className="text-gray-500 mt-1 ml-6">
+        <p className="text-gray-500">
           Explore our most popular collections
         </p>
       </div>

@@ -1,8 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="mt-16">
+    <footer className="mt-16 bg-[var(--bg-color)]">
       <div className="text-[var(--text-color)] max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
-        {/* Brand */}
         <div>
           <h2 className="text-2xl font-bold text-[var(--heading-color)] mb-3">Shopee</h2>
           <p className="text-sm leading-relaxed ">
@@ -11,7 +10,6 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Quick Links */}
         <div>
           <h3 className="text-lg font-semibold text-[var(--heading-color)] mb-3">
             Quick Links
@@ -24,7 +22,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Customer Service */}
         <div>
           <h3 className="text-lg font-semibold text-[var(--heading-color)] mb-3">
             Customer Service
@@ -37,7 +34,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Newsletter */}
         <div>
           <h3 className="text-lg font-semibold text-[var(--heading-color)] mb-3">
             Subscribe
@@ -59,7 +55,6 @@ export default function Footer() {
 
       </div>
 
-      {/* Bottom Bar */}
       <div className="border-t border-gray-600 text-center py-4 text-sm">
         © {new Date().getFullYear()} Shopee. All rights reserved.
       </div>

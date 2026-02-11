@@ -1,37 +1,32 @@
-import displyImage1 from "./Assets/display_new.png";
+import displyImage1 from "./Assets/display-1.png";
 import { FaArrowRight } from "react-icons/fa";
 
 export default function Home() {
   return (
     <section id="home">
-      <div className="flex flex-col lg:flex-row ">
+      <div className="min-h-screen flex flex-row justify-center items-center">
         <div className="flex items-center justify-center gap-3">
-          <div className="relative  gap-4 p-5">
-            <div className="absolute top-1/3  -right-4 ">
-              <img
-                className=" object-cover "
-                src="https://i.ibb.co/VL11ck4/Arrow-3.png"
-                alt=""
-              />
-            </div>
-            <h1 className="text-5xl text-[var(--heading-color)] justify-start font-bold py-2 tracking-tight">
+          <div className="flex justify-center items-center w-[450px]">
+            <img
+              src={displyImage1}
+              className="h-120 w-80 object-contain"
+              alt=""
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            <h1 className="text-4xl text-[var(--heading-color)] justify-start font-bold py-2 tracking-tight">
               Feel luxurious with premium quality outfits
             </h1>
             <p className="text-[var(--text-secondary)] py-4 text-lg max-w-lg">
               With so much demand for a style of board where every aspect of it
               flews, we created a new series
             </p>
-            <button className="btn flex flex-row justify-items-start  bg-[var(--btn-color)]  px-4 py-4 rounded-xl text-white border-none ">
-              Explore Now <FaArrowRight className=" text-2xl p-1" />
-            </button>
+            <div className="flex flex-row justify-items-start">
+              <button className="btn flex flex-row rounded-xl text-white border-none ">
+                Explore Now <FaArrowRight className=" text-2xl p-1" />
+              </button>
+            </div>
           </div>
-        </div>
-        <div className="flex justify-center items-center">
-          <img
-            src={displyImage1}
-            className="h-150"
-            alt=""
-          />
         </div>
       </div>
     </section>

@@ -35,6 +35,7 @@ body {
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  font-family: sans;
 }
 
 body::-webkit-scrollbar {
@@ -48,6 +49,7 @@ body::-webkit-scrollbar {
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 
 .active {

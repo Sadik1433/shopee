@@ -36,8 +36,8 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-[var(--bg-color)] px-4 py-20">
-      <div className="w-full max-w-md bg-[var(--card-color)] border border-[var(--border-color)] rounded-3xl p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden group">
+    <div className="min-h-screen w-[1200px] bg-[var(--bg-color)] px-4 py-20">
+      <div className="w-full max-w-md mx-auto bg-[var(--card-color)] border border-[var(--border-color)] rounded-3xl p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden group">
         <div className="absolute -top-24 -right-24 w-48 h-48 bg-[var(--heading-color)] opacity-10 rounded-full blur-3xl group-hover:opacity-20 transition-opacity"></div>
         <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-[var(--btn-color)] opacity-10 rounded-full blur-3xl group-hover:opacity-20 transition-opacity"></div>
 
