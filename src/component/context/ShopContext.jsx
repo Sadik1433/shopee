@@ -1,7 +1,6 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useCallback, useMemo } from "react";
 import all_product from "../Assets/all_product.js";
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const ShopContext = createContext(null);
 
 const DefaultCart = () => {
@@ -14,49 +13,97 @@ const DefaultCart = () => {
 
 const ShopContextProvider = ({ children }) => {
 
-  // 🔹 Load cart from localStorage OR default
   const getInitialCart = () => {
     const storedCart = localStorage.getItem("cartItems");
     return storedCart ? JSON.parse(storedCart) : DefaultCart();
   };
 
-  // 🔹 Load watchlist from localStorage OR default
   const getInitialWatchlist = () => {
     const storedWatchlist = localStorage.getItem("watchlist");
     return storedWatchlist ? JSON.parse(storedWatchlist) : [];
   };
 
+  const getInitialUsers = () => {
+    const storedUsers = localStorage.getItem("users");
+    return storedUsers ? JSON.parse(storedUsers) : [];
+  };
+
+  const getInitialActiveUser = () => {
+    const storedActiveUser = localStorage.getItem("activeUser");
+    return storedActiveUser ? JSON.parse(storedActiveUser) : null;
+  };
+
   const [cartItems, setCartItems] = useState(getInitialCart);
   const [watchlist, setWatchlist] = useState(getInitialWatchlist);
+  const [users, setUsers] = useState(getInitialUsers);
+  const [activeUser, setActiveUser] = useState(getInitialActiveUser);
 
-  // 🔹 Save cart to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
-
-  // 🔹 Save watchlist to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem("watchlist", JSON.stringify(watchlist));
   }, [watchlist]);
+  useEffect(() => {
+    localStorage.setItem("users", JSON.stringify(users));
+  }, [users]);
+  useEffect(() => {
+    localStorage.setItem("activeUser", JSON.stringify(activeUser));
+  }, [activeUser]);
 
-  // Add item
-  const addToCart = (itemId) => {
+  const signup = useCallback((userData) => {
+    const userExists = users.find((user) => user.email === userData.email);
+    if (userExists) {
+      alert("User already exists with this email!");
+      return false;
+    }
+    setUsers((prev) => [...prev, userData]);
+    setActiveUser(userData);
+    return true;
+  }, [users]);
+
+  const login = useCallback((email, password) => {
+    const user = users.find((u) => u.email === email && u.password === password);
+    if (user) {
+      setActiveUser(user);
+      return true;
+    }
+    alert("Invalid email or password!");
+    return false;
+  }, [users]);
+
+  const logout = useCallback(() => {
+    setActiveUser(null);
+  }, []);
+
+  const updateProfile = useCallback((updatedData) => {
+    if (!activeUser) return;
+
+    const updatedUser = { ...activeUser, ...updatedData };
+    setActiveUser(updatedUser);
+
+    setUsers((prev) =>
+      prev.map((user) => user.email === activeUser.email ? updatedUser : user)
+    );
+
+    return true;
+  }, [activeUser]);
+
+  const addToCart = useCallback((itemId) => {
     setCartItems((prev) => ({
       ...prev,
       [itemId]: prev[itemId] + 1,
     }));
-  };
+  }, []);
 
-  // Remove item
-  const removeFromCart = (itemId) => {
+  const removeFromCart = useCallback((itemId) => {
     setCartItems((prev) => ({
       ...prev,
       [itemId]: Math.max(prev[itemId] - 1, 0),
     }));
-  };
+  }, []);
 
-  // Toggle Watchlist
-  const toggleWatchlist = (itemId) => {
+  const toggleWatchlist = useCallback((itemId) => {
     setWatchlist((prev) => {
       if (prev.includes(Number(itemId))) {
         return prev.filter((id) => id !== Number(itemId));
@@ -64,9 +111,9 @@ const ShopContextProvider = ({ children }) => {
         return [...prev, Number(itemId)];
       }
     });
-  };
+  }, []);
 
-  const getTotalCartAmount = () => {
+  const getTotalCartAmount = useCallback(() => {
     let totalAmount = 0;
 
     for (const itemId in cartItems) {
@@ -79,17 +126,23 @@ const ShopContextProvider = ({ children }) => {
     }
 
     return totalAmount;
-  };
+  }, [cartItems]);
 
-  const contextValue = {
+  const contextValue = useMemo(() => ({
     all_product,
     cartItems,
     watchlist,
+    users,
+    activeUser,
+    signup,
+    login,
+    logout,
+    updateProfile,
     addToCart,
     removeFromCart,
     toggleWatchlist,
     getTotalCartAmount,
-  };
+  }), [cartItems, watchlist, users, activeUser, signup, login, logout, updateProfile, addToCart, removeFromCart, toggleWatchlist, getTotalCartAmount]);
 
   return (
     <ShopContext.Provider value={contextValue}>

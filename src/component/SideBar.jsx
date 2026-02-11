@@ -25,15 +25,14 @@ const SideBar = () => {
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-side border-r-1  is-drawer-close:overflow-hidden backdrop-blur bg-white/3 backdrop-blur-md">
         <div className=" is-drawer-close:w-12 is-drawer-open:w-40 flex flex-col items-start relative top-16 ">
-          <div className="absolute top-2 left-3 cursor-pointer is-drawer-close:tooltip is-drawer-open:absolute right-12  py-2 px-0">
+          <div className="absolute top-10 left-3 cursor-pointer is-drawer-close:tooltip is-drawer-open:absolute right-12  py-2 px-0">
             <label htmlFor="my-drawer-4">
-              <span>
+              <span className="cursor-pointer">
                 <TfiMenu size={28} />
-
               </span>
             </label>
           </div>
-          <ul className="absolute top-15 gap-5 menu font-bold text-lg w-full px-0  py-2">
+          <ul className="absolute top-25 gap-5 menu font-bold text-lg w-full px-0  py-2">
             <li>
               <Link to="/">
                 <span className="pr-2"><IoHome size={25} /></span>
@@ -56,8 +55,7 @@ const SideBar = () => {
             <li>
               <Link to="/kids">
                 <span className="pr-2"><FaChild size={25} /></span>
-
-                <span className="is-drawer-close:hidden">Home</span>
+                <span className="is-drawer-close:hidden">Kids</span>
               </Link>
             </li>
 
@@ -85,16 +83,6 @@ const SideBar = () => {
                 {theme === "light" ? <FaMoon size={25} /> : <FaSun size={25} />}
                 <span className="is-drawer-close:hidden pl-2">Theme</span>
               </button>
-            </li>
-
-            <li className="py-1">
-              <Link to="/profile">
-                <img
-                  src="https://www.w3schools.com/howto/img_avatar.png"
-                  alt="avatar"
-                  className="w-5 h-5 rounded-full inline-block"
-                />
-              </Link>
             </li>
           </ul>
         </div>

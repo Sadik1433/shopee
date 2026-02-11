@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, memo } from "react";
 import { ShopContext } from "../context/ShopContext.jsx";
 import { IoHeart, IoHeartOutline } from "react-icons/io5";
 
-const Item = (props) => {
+const Item = memo((props) => {
   const { watchlist, toggleWatchlist } = useContext(ShopContext);
   const isWatchlisted = watchlist.includes(Number(props.id));
 
@@ -51,6 +51,6 @@ const Item = (props) => {
       </Link>
     </div>
   );
-};
+});
 
 export default Item;

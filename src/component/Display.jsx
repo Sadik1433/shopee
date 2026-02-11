@@ -27,9 +27,8 @@ const Display = () => {
   return (
     <div className="min-h-screen w-full relative top-16 bg-[var(--bg-color)] ">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-1  py-4">
-        {/* Image Section */}
-        <div className="relative flex w-[600px] h-[500px] border-r px-2 py-4 ">
-          <div className="flex flex-col w-30 mt-7 ">
+        <div className="relative flex w-[550px] h-[500px] border-r px-2 py-4 ">
+          <div className="flex flex-col w-30 mt-[30px] ">
             <img
               src={product.image}
               alt="image1"
@@ -79,7 +78,6 @@ const Display = () => {
           </div>
         </div>
 
-        {/* Product Details Section */}
         <div className="flex flex-col w-[550px]">
           <div className="flex justify-between items-start">
             <div className="w-full">
