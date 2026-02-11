@@ -24,7 +24,7 @@ const Navbar = () => {
   const shouldHideNavbar = hideNavbarRoutes.includes(location.pathname);
 
   return (
-      <div className="navbar fixed top-0 right-0 z-100 backdrop-blur bg-[var(--navbar-bg-color) text-[var(--text-color) ] shadow-[0_1px_9px_var(--shadow)] ">
+      <div className="navbar fixed top-0 right-0 z-100 backdrop-blur">
         <div className="flex-1">
           <a className="btn btn-ghost text-xl">Shopee</a>
         </div>
@@ -39,7 +39,7 @@ const Navbar = () => {
         </div>
         {/* search input display box */}
         {search && (
-          <div className="bg-white absolute top-14 left-158 text-blue-900 border mt-2 max-h-60 overflow-y-auto w-60">
+          <div className="bg-white absolute top-14 left-104 text-blue-900 border mt-2 max-h-60 overflow-y-auto w-60">
             {filteredProducts.length > 0 ? (
               filteredProducts.map((product) => (
                 <Link

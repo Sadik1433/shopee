@@ -8,15 +8,16 @@ import { FaFemale } from "react-icons/fa";
 import { FaChild } from "react-icons/fa";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { useEffect, useState } from "react";
+import { MdOutlineFavorite } from "react-icons/md";
 
 const SideBar = () => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
   return (
@@ -71,6 +72,12 @@ const SideBar = () => {
               <Link to="/cart">
                 <span className="pr-2"><MdOutlineShoppingCart size={25} /></span>
                 <span className="is-drawer-close:hidden">Cart</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/favourite">
+                <span className="pr-2"><MdOutlineFavorite size={25} /></span>
+                <span className="is-drawer-close:hidden">Favourite</span>
               </Link>
             </li>
             <li>

@@ -20,12 +20,24 @@ const ShopContextProvider = ({ children }) => {
     return storedCart ? JSON.parse(storedCart) : DefaultCart();
   };
 
+  // 🔹 Load watchlist from localStorage OR default
+  const getInitialWatchlist = () => {
+    const storedWatchlist = localStorage.getItem("watchlist");
+    return storedWatchlist ? JSON.parse(storedWatchlist) : [];
+  };
+
   const [cartItems, setCartItems] = useState(getInitialCart);
+  const [watchlist, setWatchlist] = useState(getInitialWatchlist);
 
   // 🔹 Save cart to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
+
+  // 🔹 Save watchlist to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("watchlist", JSON.stringify(watchlist));
+  }, [watchlist]);
 
   // Add item
   const addToCart = (itemId) => {
@@ -43,26 +55,39 @@ const ShopContextProvider = ({ children }) => {
     }));
   };
 
+  // Toggle Watchlist
+  const toggleWatchlist = (itemId) => {
+    setWatchlist((prev) => {
+      if (prev.includes(Number(itemId))) {
+        return prev.filter((id) => id !== Number(itemId));
+      } else {
+        return [...prev, Number(itemId)];
+      }
+    });
+  };
+
   const getTotalCartAmount = () => {
-  let totalAmount = 0;
+    let totalAmount = 0;
 
-  for (const itemId in cartItems) {
-    if (cartItems[itemId] > 0) {
-      const itemInfo = all_product.find(
-        (product) => product.id === Number(itemId)
-      );
-      totalAmount += itemInfo.price * cartItems[itemId];
+    for (const itemId in cartItems) {
+      if (cartItems[itemId] > 0) {
+        const itemInfo = all_product.find(
+          (product) => product.id === Number(itemId)
+        );
+        totalAmount += itemInfo.price * cartItems[itemId];
+      }
     }
-  }
 
-  return totalAmount;
-};
+    return totalAmount;
+  };
 
   const contextValue = {
     all_product,
     cartItems,
+    watchlist,
     addToCart,
     removeFromCart,
+    toggleWatchlist,
     getTotalCartAmount,
   };
 

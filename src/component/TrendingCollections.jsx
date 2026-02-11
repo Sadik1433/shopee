@@ -7,8 +7,8 @@ const TrendingCollection = (props) => {
   return (
     <div className="mr-10">
       <div className="container">
-        <div className="bg-[#87A2FF]">
-          <h1 className="text-4xl ml-9 font-bold p-4 text-white ">{props.badge} Collections</h1>
+        <div className="bg-[var(--navbar-bg-color)]">
+          <h1 className="text-4xl ml-9 font-bold p-4 text-[var(--heading-color)] ">{props.badge} Collections</h1>
         </div>
         <ul className="flex gap-4 overflow-x-auto  px-4 py-8 scrollbar-hide">
           {all_product.map((item, i) => {

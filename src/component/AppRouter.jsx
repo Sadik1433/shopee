@@ -7,6 +7,7 @@ import banner_kids from "./Assets/banner_kids.png";
 import banner_men from "./Assets/banner_mens.png";
 import banner_women from "./Assets/banner_women.png";
 import Cart from '../Pages/Cart.jsx'
+import Favourite from './Favourite.jsx';
 
 const AppRouter = () => {
   
@@ -26,6 +27,7 @@ const AppRouter = () => {
           path="/kids"
           element={<ProductCategory category="kids" banner={banner_kids} />}
         />
+
         <Route
           path="/electro"
           element={<ProductCategory category="electronics" banner={banner_kids} />}
@@ -33,6 +35,7 @@ const AppRouter = () => {
         <Route path="/product" element={<Display />}>
           <Route path=":productId" element={<Display />} />
         </Route>
+        <Route path="/favourite" element={<Favourite />} />
 
         <Route path="/login" element={<Login />} />
         <Route path="/cart" element={<Cart  />} />

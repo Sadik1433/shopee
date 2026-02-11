@@ -1,36 +1,36 @@
 import FooterSection from "./FooterSection.jsx";
 import Item from "./Item/Item.jsx";
 import { useContext, useState } from "react";
-import TrendingCategory from "./TrendingCollections.jsx"
+import RelatedProducts from "./RelatedProducts.jsx"
 import { ShopContext } from './context/ShopContext.jsx'
 
 const ProductCategory = (props) => {
   const [sortBy, setSortBy] = useState("sort");
   const [search, setSearch] = useState("");
-  const {all_product} = useContext(ShopContext);
+  const { all_product} = useContext(ShopContext);
 
   const filteredAndSortedProducts = all_product
-  .filter((product) => {
-    return (
-      product.name.toLowerCase().includes(search.toLowerCase()) &&
-      (props.category === "All" || product.category === props.category)
-    );
-  })
-  .sort((a, b) => {
-    if (sortBy === "az") {
-      return a.name.localeCompare(b.name); // A → Z
-    }
-    if (sortBy === "za") {
-      return b.name.localeCompare(a.name); // Z → A
-    }
-    if (sortBy === "low") {
-      return a.price - b.price; // Low → High
-    }
-    if (sortBy === "high") {
-      return b.price - a.price; // High → Low
-    }
-    return 0;
-  });
+    .filter((product) => {
+      return (
+        product.name.toLowerCase().includes(search.toLowerCase()) &&
+        (props.category === "All" || product.category === props.category)
+      );
+    })
+    .sort((a, b) => {
+      if (sortBy === "az") {
+        return a.name.localeCompare(b.name); // A → Z
+      }
+      if (sortBy === "za") {
+        return b.name.localeCompare(a.name); // Z → A
+      }
+      if (sortBy === "low") {
+        return a.price - b.price; // Low → High
+      }
+      if (sortBy === "high") {
+        return b.price - a.price; // High → Low
+      }
+      return 0;
+    });
 
 
   return (
@@ -56,7 +56,7 @@ const ProductCategory = (props) => {
           className="size-full object-cover"
         />
       </div>
-      <div className="gap-y-5 grid sm:grid-cols-3 lg:grid-cols-5  py-3 px-4"> 
+      <div className="gap-y-5 grid sm:grid-cols-3 lg:grid-cols-5  py-3 px-4">
         {filteredAndSortedProducts.map((item, i) => {
           if (item.category === props.category)
             return (
@@ -74,10 +74,10 @@ const ProductCategory = (props) => {
             );
         })}
       </div>
-      <TrendingCategory badge="New" category={props.category} />
-      <TrendingCategory badge="Trending" category={props.category}/>
-      <TrendingCategory badge="Best Seller" category={props.category}/>
-      <TrendingCategory badge="Popular" category={props.category}/>
+
+      <RelatedProducts heading="Offers" badge="Offers" category={props.category} />
+      <RelatedProducts heading="Trending" badge="Trending" category={props.category} />
+      <RelatedProducts heading="Best Seller" badge="Best Seller" category={props.category} />
       <FooterSection />
     </div>
   );

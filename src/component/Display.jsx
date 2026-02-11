@@ -3,15 +3,11 @@ import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ShopContext } from "./context/ShopContext.jsx";
 import FooterSection from "./FooterSection.jsx";
+import ProductTabs from "./ProductTabs.jsx";
+import ReviewsSection from "./Reviews.jsx";
+import DeliveryInfo from "./Delivery.jsx";
+import RelatedProducts from "./RelatedProducts.jsx";
 
-export const sizes = ["S", "M", "L", "XL", "XXL"];
-
-export const colors = [
-  { name: "Royal Brown", class: "bg-[#654321]" },
-  { name: "Light Gray", class: "bg-gray-200" },
-  { name: "Steel Blue", class: "bg-[#4682B4]" },
-  { name: "Navy", class: "bg-navy-900" },
-];
 
 import {
   IoHeart,
@@ -21,18 +17,18 @@ import {
 } from "react-icons/io5";
 
 const Display = () => {
-  const { all_product, addToCart } = useContext(ShopContext);
+  const { all_product, addToCart, watchlist, toggleWatchlist } = useContext(ShopContext);
   const { productId } = useParams();
-  const [isFavorite, setIsFavorite] = useState(false);
+  const isFavorite = watchlist.includes(Number(productId));
   const product = all_product.find((item) => item.id === Number(productId));
   const [selectedSize, setSelectedSize] = useState("8");
   const [selectedColor, setSelectedColor] = useState("Royal Brown");
 
   return (
-    <div className="min-h-screen relative top-16 bg-[var(--bg-color)]">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3  py-4">
+    <div className="min-h-screen w-full relative top-16 bg-[var(--bg-color)] ">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-1  py-4">
         {/* Image Section */}
-        <div className="flex w-[550px] border-r px-2 py-4 ">
+        <div className="relative flex w-[600px] h-[500px] border-r px-2 py-4 ">
           <div className="flex flex-col w-30 mt-7 ">
             <img
               src={product.image}
@@ -71,7 +67,7 @@ const Display = () => {
               </button>
               <button
                 className="rounded-md w-max text-gray-600 p-2.5 "
-                onClick={() => setIsFavorite(!isFavorite)}
+                onClick={() => toggleWatchlist(productId)}
               >
                 {isFavorite ? (
                   <IoHeart className="w-5 h-5 text-red-500" />
@@ -84,7 +80,7 @@ const Display = () => {
         </div>
 
         {/* Product Details Section */}
-        <div className="flex flex-col relative right-15 ">
+        <div className="flex flex-col w-[550px]">
           <div className="flex justify-between items-start">
             <div className="w-full">
               <p className="text-gray-400 dark:text-slate-400 text-[0.9rem]">
@@ -140,15 +136,14 @@ const Display = () => {
               </h2>
             </div>
             <div className="flex gap-2">
-              {colors.map((color) => (
+              {product.colors.map((color) => (
                 <button
                   key={color.name}
                   onClick={() => setSelectedColor(color.name)}
-                  className={` w-20 h-10 rounded-md border-2 transition-all duration-300 ${
-                    selectedColor === color.name
-                      ? "border-[#0FABCA] p-1"
-                      : "border-transparent"
-                  } `}
+                  className={` w-20 h-10 rounded-md border-2 transition-all duration-300 ${selectedColor === color.name
+                    ? "border-[#0FABCA] p-1"
+                    : "border-transparent"
+                    } `}
                   aria-label={`Select ${color.name} color`}
                 >
                   <div
@@ -162,7 +157,7 @@ const Display = () => {
           <div className="mb-10">
             <div className="flex justify-between items-center mb-2">
               <h2 className="font-medium dark:text-[#abc2d3] text-gray-400">
-                Size:{" "}
+                Size:
                 <span className="font-semibold dark:text-slate-400 text-gray-700">
                   {selectedSize}
                 </span>
@@ -172,15 +167,14 @@ const Display = () => {
               </button>
             </div>
             <div className="flex w-full flex-wrap gap-2">
-              {sizes.map((size) => (
+              {product.sizes.map((size) => (
                 <button
                   key={size}
                   onClick={() => setSelectedSize(size)}
-                  className={`px-4 py-2 max-w-[60px] grow rounded-md border ${
-                    selectedSize === size
-                      ? "border-[#0FABCA] bg-[#0FABCA] text-white"
-                      : "border-gray-200 dark:border-slate-700 dark:text-[#abc2d3] hover:border-[#0FABCA]"
-                  }`}
+                  className={`px-4 py-2 max-w-[60px] grow rounded-md border ${selectedSize === size
+                    ? "border-[#0FABCA] bg-[#0FABCA] text-white"
+                    : "border-gray-200 dark:border-slate-700 dark:text-[#abc2d3] hover:border-[#0FABCA]"
+                    }`}
                 >
                   {size}
                 </button>
@@ -201,6 +195,11 @@ const Display = () => {
           </div>
         </div>
       </div>
+      <ProductTabs />
+      <ReviewsSection />
+      <DeliveryInfo />
+      <RelatedProducts heading="Trending" badge="Trending" category={product.category} />
+      <RelatedProducts heading="Offers" badge="Offers" category={product.category} />
       <FooterSection />
     </div>
   );
