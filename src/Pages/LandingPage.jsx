@@ -3,6 +3,7 @@ import Home from "../component/Home";
 import Offers from "../component/Offers";
 import About from "../component/About";
 import Collections from "../component/Collections";
+import RelatedProducts from "../component/RelatedProducts";
 
 const LandingPage = () => {
 
@@ -11,6 +12,7 @@ const LandingPage = () => {
       <Home />
       <Offers />
       <Collections />
+      <RelatedProducts heading="Recommended for You" />
       <About />
       <FooterSection />
     </div>

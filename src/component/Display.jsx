@@ -83,27 +83,27 @@ const Display = () => {
         <div className="flex flex-col w-[550px]">
           <div className="flex justify-between items-start">
             <div className="w-full">
-              <p className="text-gray-400 dark:text-slate-400 text-[0.9rem]">
+              <p className="text-[var(--text-secondary)] text-[0.9rem] mb-2 font-medium">
                 Home / {product.category} / {product.name}
               </p>
-              <h1 className="text-[1.6rem] dark:text-[#abc2d3] md:text-[1.8rem] text-gray-800 font-semibold mb-3">
+              <h1 className="text-3xl text-[var(--text-color)] font-bold mb-4 tracking-tight">
                 {product.name}
               </h1>
-              <div className="flex flex-col md:flex-row md:items-center justify-between w-full gap-1 md:gap-4 mb-4">
-                <div className="flex items-center">
-                  <span className="text-[1.4rem] font-semibold dark:text-[#abc2d3] text-gray-800">
+              <div className="flex flex-col md:flex-row md:items-center justify-between w-full gap-4 mb-6">
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl font-bold text-[var(--heading-color)]">
                     Rs . {product.price.toFixed(2)}
                   </span>
-                  <span className="text-gray-400 dark:text-slate-400 text-[1rem] line-through ml-2">
+                  <span className="text-[var(--text-secondary)] text-lg line-through">
                     Rs . {product.actualPrice.toFixed(2)}
                   </span>
                 </div>
-                <div className="flex items-center gap-1">
-                  <IoStar className="text-yellow-400 text-[1.1rem]" />
-                  <span className="text-gray-800 dark:text-[#abc2d3] font-semibold">
+                <div className="flex items-center gap-2 bg-[var(--input-color)] px-3 py-1.5 rounded-full">
+                  <IoStar className="text-yellow-400 text-lg" />
+                  <span className="text-[var(--text-color)] font-bold">
                     {product.rating}
                   </span>
-                  <span className="text-gray-500 dark:text-slate-400">
+                  <span className="text-[var(--text-secondary)] text-sm">
                     (1,238 Sold)
                   </span>
                 </div>
@@ -111,76 +111,81 @@ const Display = () => {
             </div>
           </div>
 
-          <div className="mb-6 border-t-[2px] dark:border-slate-700 border-gray-200 border-dashed mt-1 pt-6">
-            <h2 className="text-gray-700 dark:text-[#abc2d3] font-semibold mb-2">
-              Description:
+          <div className="mb-6 border-t border-[var(--border-color)] border-dashed pt-6">
+            <h2 className="text-[var(--text-color)] font-bold mb-3 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--heading-color)]"></span>
+              Description
             </h2>
-            <p className="text-[0.9rem] dark:text-slate-400 text-gray-600">
+            <p className="text-[0.95rem] text-[var(--text-secondary)] leading-relaxed">
               Boba etiam ut bulla tea est potus electus singulari compositione
               saporum et textuum, quae in Taiwan annis 1980 orta sunt. Boba
               refert ad pitas marnicas tapiocas in fundo potus inventas, quae
               typice lacte tea nigro sapiuntur.
-              <button className="text-blue-600 hover:underline ml-1">
+              <button className="text-[var(--heading-color)] font-semibold hover:underline ml-2">
                 See More...
               </button>
             </p>
           </div>
 
-          <div className="mb-8">
-            <div className="flex justify-between items-center mb-2">
-              <h2 className="font-medium dark:text-[#abc2d3] text-gray-400">
-                Color:{" "}
-                <span className="text-gray-700 dark:text-slate-400 font-semibold">
-                  {selectedColor}
-                </span>
-              </h2>
+          {product.colors && product.colors.length > 0 && (
+            <div className="mb-8">
+              <div className="flex justify-between items-center mb-2">
+                <h2 className="font-medium dark:text-[#abc2d3] text-gray-400">
+                  Color:
+                  <span className="text-gray-700 dark:text-slate-400 font-semibold">
+                    {selectedColor}
+                  </span>
+                </h2>
+              </div>
+              <div className="flex gap-2">
+                {product.colors.map((color) => (
+                  <button
+                    key={color.name}
+                    onClick={() => setSelectedColor(color.name)}
+                    className={` w-20 h-10 rounded-md border-2 transition-all duration-300 ${selectedColor === color.name
+                      ? "border-[#0FABCA] p-1"
+                      : "border-transparent"
+                      } `}
+                    aria-label={`Select ${color.name} color`}
+                  >
+                    <div
+                      className={`w-full h-full rounded-md transition-all duration-300 ${color.class}`}
+                    ></div>
+                  </button>
+                ))}
+              </div>
             </div>
-            <div className="flex gap-2">
-              {product.colors.map((color) => (
-                <button
-                  key={color.name}
-                  onClick={() => setSelectedColor(color.name)}
-                  className={` w-20 h-10 rounded-md border-2 transition-all duration-300 ${selectedColor === color.name
-                    ? "border-[#0FABCA] p-1"
-                    : "border-transparent"
-                    } `}
-                  aria-label={`Select ${color.name} color`}
-                >
-                  <div
-                    className={`w-full h-full rounded-md transition-all duration-300 ${color.class}`}
-                  ></div>
-                </button>
-              ))}
-            </div>
-          </div>
+          )}
 
-          <div className="mb-10">
-            <div className="flex justify-between items-center mb-2">
-              <h2 className="font-medium dark:text-[#abc2d3] text-gray-400">
-                Size:
-                <span className="font-semibold dark:text-slate-400 text-gray-700">
-                  {selectedSize}
-                </span>
-              </h2>
-              <button className="text-gray-600 text-[0.8rem] dark:text-[#abc2d3] underline">
-                View Size Chart
-              </button>
-            </div>
-            <div className="flex w-full flex-wrap gap-2">
-              {product.sizes.map((size) => (
-                <button
-                  key={size}
-                  onClick={() => setSelectedSize(size)}
-                  className={`px-4 py-2 max-w-[60px] grow rounded-md border ${selectedSize === size
-                    ? "border-[#0FABCA] bg-[#0FABCA] text-white"
-                    : "border-gray-200 dark:border-slate-700 dark:text-[#abc2d3] hover:border-[#0FABCA]"
-                    }`}
-                >
-                  {size}
+          {product.sizes && product.sizes.length > 0 && (
+            <div className="mb-10">
+              <div className="flex justify-between items-center mb-2">
+                <h2 className="font-medium dark:text-[#abc2d3] text-gray-400">
+                  Size:
+                  <span className="font-semibold dark:text-slate-400 text-gray-700">
+                    {selectedSize}
+                  </span>
+                </h2>
+                <button className="text-gray-600 text-[0.8rem] dark:text-[#abc2d3] underline">
+                  View Size Chart
                 </button>
-              ))}
+              </div>
+              <div className="flex w-full flex-wrap gap-2">
+                {product.sizes.map((size) => (
+                  <button
+                    key={size}
+                    onClick={() => setSelectedSize(size)}
+                    className={`px-4 py-2 max-w-[60px] grow rounded-md border ${selectedSize === size
+                      ? "border-[#0FABCA] bg-[#0FABCA] text-white"
+                      : "border-gray-200 dark:border-slate-700 dark:text-[#abc2d3] hover:border-[#0FABCA]"
+                      }`}
+                  >
+                    {size}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           <div className="flex flex-col md:flex-row gap-4 mt-auto">
             <button

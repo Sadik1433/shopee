@@ -1,16 +1,13 @@
 import offers from "./Assets/offer_zone";
-import girlImage from "./Assets/display_4.png";
+import Image from "./Assets/profile_bg-1.png";
 
 export default function Offers() {
   return (
     <section id="offer"
-      className="h-screen px-0 py-2 "
+      className="h-screen px-0 py-12"
     >
-      <h2 className="text-4xl font-bold mb-8 text-blue-700 ml-9 ">Special Offers</h2>
-      <div className="flex">
-        <div>
-          <img src={girlImage} alt="display" className="w-[400px]" />
-        </div>
+      <h2 className="text-4xl font-bold mb-5 text-[var(--heading-color)] ml-9">Special Offers</h2>
+      <div className="flex justify-evenly">
         <div className="flex gap-4 items-center overflow-x-scroll md:overflow-visible ">
           {offers.map((offer, index) => (
             <div
@@ -19,7 +16,7 @@ export default function Offers() {
             >
               <div>
                 <h3 className="text-xl font-semibold">{offer.title}</h3>
-                <p className="text-2xl font-bold mt-2">{offer.discount}</p>
+                <p className="text-2xl  font-bold mt-2">{offer.discount}</p>
                 <p className="text-sm mt-2 opacity-90">{offer.desc}</p>
               </div>
 
@@ -28,6 +25,9 @@ export default function Offers() {
               </button>
             </div>
           ))}
+        </div>
+        <div>
+          <img src={Image} alt="display" className="w-[350px]" />
         </div>
       </div>
     </section>

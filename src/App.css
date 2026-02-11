@@ -1,19 +1,29 @@
 :root {
-  --bg-color: #F5F7FA;
-  --navbar-bg-color: #e6f5f3;
-  --card-color: #F0F2F5;
-  --input-color: #dff3f1;
-  --text-color: #111827;
-  --heading-color: #e848f9;
+  --bg-color: #F8FAFC;
+  --navbar-bg-color: rgba(255, 255, 255, 0.8);
+  --card-color: #FFFFFF;
+  --input-color: #F1F5F9;
+  --text-color: #0F172A;
+  --text-secondary: #475569;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+  --heading-color: #4F46E5;
+  --accent-color: #D946EF;
+  --btn-color: #4F46E5;
+  --border-color: #E2E8F0;
 }
 
 [data-theme="dark"] {
-  --bg-color: #0f172a;
-  --navbar-bg-color: #020617;
-  --card-color: #1e293b;
+  --bg-color: #0F172A;
+  --navbar-bg-color: rgba(15, 23, 42, 0.8);
+  --card-color: #1E293B;
   --input-color: #334155;
-  --text-color: #e5e7eb;
-  --heading-color: #e848f9;
+  --text-color: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --heading-color: #818CF8;
+  --accent-color: #E879F9;
+  --btn-color: #6366F1;
+  --border-color: #334155;
 }
 
 

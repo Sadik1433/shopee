@@ -4,15 +4,29 @@ import Item from "./Item/Item";
 
 export default function RelatedProducts({ badge, category, heading }) {
   const { all_product } = useContext(ShopContext);
-  const filteredProducts = all_product.filter(
-    (item) => item.badge === badge && item.category === category
-  );
-  return (
-    <div className="max-w-7xl mx-auto mt-16 px-4">
-      <h2 className="text-2xl font-semibold text-[var(--heading-color)] mb-6">{heading} Section </h2>
 
-      <div className="flex gap-6 overflow-x-auto overflow-y-hidden scrollbar-hide pb-4 ">
-        {filteredProducts.map((item, i) => (
+  let displayProducts = [];
+
+  if (badge && category) {
+    displayProducts = all_product.filter(
+      (item) => item.badge === badge && item.category === category
+    );
+  } else {
+    displayProducts = [...all_product]
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 10);
+  }
+
+  return (
+    <div className="max-w-[1200px] mt-24 px-4 overflow-hidden">
+      <div className="border-b-1 border-gray-200 py-2 px-2">
+      <h2 className="text-4xl font-bold text-[var(--heading-color)] flex items-center gap-3">
+        {heading || "Discover Related Products"}
+      </h2>
+      </div>
+
+      <div className="flex gap-8 overflow-x-auto overflow-y-hidden scrollbar-hide pb-8 px-2 py-3">
+        {displayProducts.map((item, i) => (
           <Item
             key={i}
             id={item.id}
@@ -22,7 +36,8 @@ export default function RelatedProducts({ badge, category, heading }) {
             price={item.price}
             actual={item.actualPrice}
             rating={item.rating}
-            badge={item.badge} />
+            badge={item.badge}
+          />
         ))}
       </div>
     </div>

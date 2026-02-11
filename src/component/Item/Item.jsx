@@ -8,7 +8,7 @@ const Item = (props) => {
   const isWatchlisted = watchlist.includes(Number(props.id));
 
   return (
-    <div className="bg-[var(--card-color) backdrop-blur border-1 shadow hover:shadow-xl transition p-1 min-w-[210px] max-w-[200px] rounded-md relative group">
+    <div className="bg-[var(--card-color)] border border-[var(--border-color)] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-2 min-w-[220px] max-w-[220px] rounded-xl relative group">
       <button
         onClick={(e) => {
           e.preventDefault();
@@ -30,19 +30,22 @@ const Item = (props) => {
             className="w-full h-60 object-cover rounded-md"
           />
         </div>
-        <div className="truncate py-2">
-          <div className="font-bold text-md text-center text-blue-700">
-            <span>{props.name}</span>
-            <hr />
+        <div className="py-4 px-2">
+          <div className="font-bold text-base text-[var(--text-color)] group-hover:text-[var(--heading-color)] transition-colors line-clamp-1 mb-2">
+            {props.name}
           </div>
-          <div className="mt-1 flex justify-around items-center text-sm font-semibold">
-            <span className="text-xl text-bold text-justify text-blue-900">
-              ₹{props.price}
-            </span>
-            <span className="text-sm text-gray-400 line-through ">
-              ₹{props.actual}
-            </span>
-            <span className="text-green-500 px-3">★ {props.rating}</span>
+          <div className="flex justify-between items-center">
+            <div className="flex flex-col">
+              <span className="text-lg font-bold text-[var(--text-color)]">
+                ₹{props.price}
+              </span>
+              <span className="text-xs text-[var(--text-secondary)] line-through">
+                ₹{props.actual}
+              </span>
+            </div>
+            <div className="bg-[var(--input-color)] px-2 py-1 rounded-lg text-[var(--heading-color)] text-sm font-bold flex items-center gap-1">
+              <span>★</span> {props.rating}
+            </div>
           </div>
         </div>
       </Link>

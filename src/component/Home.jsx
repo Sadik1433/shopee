@@ -14,10 +14,10 @@ export default function Home() {
                 alt=""
               />
             </div>
-            <h1 className="text-5xl text-[#0d1b97] justify-start font-[Gilroy] py-2">
+            <h1 className="text-5xl text-[var(--heading-color)] justify-start font-bold py-2 tracking-tight">
               Feel luxurious with premium quality outfits
             </h1>
-            <p className="text-[var(--text-color)] py-4">
+            <p className="text-[var(--text-secondary)] py-4 text-lg max-w-lg">
               With so much demand for a style of board where every aspect of it
               flews, we created a new series
             </p>
