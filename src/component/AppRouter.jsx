@@ -8,7 +8,7 @@ import banner_men from "./Assets/banner_mens.png";
 import banner_women from "./Assets/banner_women.png";
 import Cart from '../Pages/Cart.jsx'
 import Profile from '../Pages/Profile.jsx'
-import Favourite from './Favourite.jsx';
+import Favourite from '../Pages/Favourite.jsx';
 
 const AppRouter = () => {
   

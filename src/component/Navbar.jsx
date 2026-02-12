@@ -112,7 +112,7 @@ const Navbar = () => {
                   <img
                     src={activeUser.profileImage}
                     alt="avatar"
-                    className="w-11  rounded-full inline-block cursor-pointer hover:scale-110 transition-all"
+                    className="w-10 object-center rounded-full cursor-pointer hover:scale-110 transition-all"
                   />
                 </Link>
               </div>

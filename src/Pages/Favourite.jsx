@@ -1,17 +1,26 @@
 import { useContext } from "react";
-import { ShopContext } from "./context/ShopContext";
-import Item from "./Item/Item";
+import { ShopContext } from "../component/context/ShopContext";
+import Item from "../component/Item/Item";
+import { IoArrowBack } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 const Favourite = () => {
     const { watchlist, all_product } = useContext(ShopContext);
+    const navigate = useNavigate();
     return (
-        <div className="relative top-15 min-h-screen">
+        <div className="relative top-15 bg-[var(--bg-color)]">
             {all_product.some(p => watchlist.includes(p.id)) && (
                 <div className="mt-12 px-4">
-                    <div className="text-center w-full">
-                        <h2 className="text-2xl font-bold text-red-600 italic mb-6">Favourites Section</h2>
+                    <div className="text-center w-full flex  gap-2 border-b-2 border-gray-200">
+                        <button
+                            onClick={() => navigate('/')}
+                            className="flex items-center mb-2"
+                        >
+                            <IoArrowBack size={25} />
+                        </button>
+                        <h2 className="text-2xl font-bold text-[var(--heading-color)] ml-4 mb-2">Favourites Section</h2>
                     </div>
-                    <div className="flex grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 overflow-x-auto pb-4 scrollbar-hide">
+                    <div className="grid grid-cols-5 gap-4 overflow-x-auto p-3 scrollbar-hide">
                         {all_product
                             .filter(p => watchlist.includes(p.id))
                             .map((item, i) => (

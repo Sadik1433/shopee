@@ -2,17 +2,17 @@ import collections from "./Assets/collection";
 
 export default function Collections() {
   return (
-    <section className="h-screen px-2 py-2 max-w-[1200px] relative left-1 " id="trending">
+    <section className="h-screen px-5 py-5 max-w-[1200px] relative left-1 " id="trending">
       <div className="mb-2">
         <h2 className="text-3xl font-bold mb-4 text-[var(--heading-color)] italic">
           Trending Collections
         </h2>
-        <p className="text-gray-500">
+        <p className="text-[var(--text-color)] text-lg">
           Explore our most popular collections
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      <div className="grid grid-cols-4 gap-3">
         {collections.map((item) => (
           <div
             key={item.id}

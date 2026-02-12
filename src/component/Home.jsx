@@ -9,8 +9,8 @@ export default function Home() {
           <div className="flex justify-center items-center w-[450px]">
             <img
               src={displyImage1}
-              className="h-120 w-80 object-contain"
-              alt=""
+              className="h-120 w-80 object-contain opacity-100"
+              alt="display-image"
             />
           </div>
           <div className="flex flex-col gap-2">

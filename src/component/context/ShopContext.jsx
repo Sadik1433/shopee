@@ -103,6 +103,13 @@ const ShopContextProvider = ({ children }) => {
     }));
   }, []);
 
+  const clearFromCart = useCallback((itemId) => {
+    setCartItems((prev) => ({
+      ...prev,
+      [itemId]: 0,
+    }));
+  }, []);
+
   const toggleWatchlist = useCallback((itemId) => {
     setWatchlist((prev) => {
       if (prev.includes(Number(itemId))) {
@@ -140,9 +147,10 @@ const ShopContextProvider = ({ children }) => {
     updateProfile,
     addToCart,
     removeFromCart,
+    clearFromCart,
     toggleWatchlist,
     getTotalCartAmount,
-  }), [cartItems, watchlist, users, activeUser, signup, login, logout, updateProfile, addToCart, removeFromCart, toggleWatchlist, getTotalCartAmount]);
+  }), [cartItems, watchlist, users, activeUser, signup, login, logout, updateProfile, addToCart, removeFromCart, clearFromCart, toggleWatchlist, getTotalCartAmount]);
 
   return (
     <ShopContext.Provider value={contextValue}>

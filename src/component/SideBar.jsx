@@ -23,7 +23,7 @@ const SideBar = () => {
   return (
     <div className="drawer  drawer-open  z-10  w-10 h-screen fixed top-0 left-0 bottom-0  text-[var(--text-color) ]">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-side border-r-1  is-drawer-close:overflow-hidden backdrop-blur bg-white/3 backdrop-blur-md">
+      <div className="drawer-side border-r-1  is-drawer-close:overflow-hidden backdrop-blur bg-white/1 backdrop-blur-md">
         <div className=" is-drawer-close:w-13 is-drawer-open:w-45 flex flex-col items-start relative top-16 ">
           <div className="absolute top-3 left-3 cursor-pointer is-drawer-close:tooltip is-drawer-open:absolute right-12  py-2 px-0">
             <label htmlFor="my-drawer-4">
@@ -32,7 +32,7 @@ const SideBar = () => {
               </span>
             </label>
           </div>
-          <ul className="absolute top-14 gap-5 menu  text-lg w-full px-0 py-1 text-[24px] text-[var(--heading-color)]  ">
+          <ul className="absolute top-14 gap-5 menu  w-full px-0 py-1 text-[24px] text-[var(--heading-color)]">
             <li>
               <Link to="/">
                 <span>🏠</span>

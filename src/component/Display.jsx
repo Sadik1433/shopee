@@ -26,7 +26,7 @@ const Display = () => {
 
   return (
     <div className="min-h-screen w-full relative top-16 bg-[var(--bg-color)] ">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-1  py-4">
+      <div className="grid grid-cols-2 gap-1  py-4">
         <div className="relative flex w-[550px] h-[500px] border-r px-2 py-4 ">
           <div className="flex flex-col w-30 mt-[30px] ">
             <img
@@ -87,7 +87,7 @@ const Display = () => {
               <h1 className="text-3xl text-[var(--text-color)] font-bold mb-4 tracking-tight">
                 {product.name}
               </h1>
-              <div className="flex flex-col md:flex-row md:items-center justify-between w-full gap-4 mb-6">
+              <div className="flex flex-row items-center justify-between w-full gap-4 mb-6">
                 <div className="flex items-center gap-3">
                   <span className="text-2xl font-bold text-[var(--heading-color)]">
                     Rs . {product.price.toFixed(2)}
@@ -185,7 +185,7 @@ const Display = () => {
             </div>
           )}
 
-          <div className="flex flex-col md:flex-row gap-4 mt-auto">
+          <div className="flex flex-row gap-4 mt-auto">
             <button
               onClick={() => addToCart(productId)}
               className="grow py-3 px-6 bg-[#0FABCA] hover:bg-[#0FABCA]/90 rounded-md text-white"

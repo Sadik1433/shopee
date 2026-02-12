@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="mt-16 bg-[var(--bg-color)]">
-      <div className="text-[var(--text-color)] max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="text-[var(--text-color)] max-w-6xl mx-auto px-4 py-12 grid grid-cols-4 gap-8">
         <div>
           <h2 className="text-2xl font-bold text-[var(--heading-color)] mb-3">Shopee</h2>
           <p className="text-sm leading-relaxed ">

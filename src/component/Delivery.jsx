@@ -1,6 +1,6 @@
 export default function DeliveryInfo() {
   return (
-    <div className="mt-16 px-4 grid md:grid-cols-3 gap-2">
+    <div className="mt-16 px-4 grid grid-cols-3 gap-2">
       <div className="max-w-[300px] h-[80px] border rounded-xl text-center">
         🚚
         <h3 className="font-semibold mt-2">Free Delivery</h3>

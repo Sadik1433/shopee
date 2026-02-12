@@ -8,7 +8,7 @@ export default function Offers() {
     >
       <h2 className="text-4xl font-bold mb-5 text-[var(--heading-color)] ml-9">Special Offers</h2>
       <div className="flex justify-evenly">
-        <div className="flex gap-4 items-center overflow-x-scroll md:overflow-visible ">
+        <div className="flex gap-4 items-center overflow-visible ">
           {offers.map((offer, index) => (
             <div
               key={index}

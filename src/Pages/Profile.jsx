@@ -66,8 +66,8 @@ const Profile = () => {
                     </button>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div className="lg:col-span-1 flex flex-col gap-6">
+                <div className="grid grid-cols-3 gap-8">
+                    <div className="col-span-1 flex flex-col gap-6">
                         <div className="bg-[var(--card-color)] border border-[var(--border-color)] rounded-3xl p-8 flex flex-col items-center shadow-xl backdrop-blur-sm">
                             <div className="relative group">
                                 <img
@@ -103,14 +103,14 @@ const Profile = () => {
                         </div>
                     </div>
 
-                    <div className="lg:col-span-2">
+                    <div className="col-span-2">
                         <div className="bg-[var(--card-color)] border border-[var(--border-color)] rounded-3xl p-8 shadow-xl backdrop-blur-sm flex flex-col gap-6">
                             <h3 className="text-xl font-bold text-[var(--heading-color)] flex items-center gap-2 mb-2">
                                 <IoPersonOutline />
                                 Account Details
                             </h3>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="grid grid-cols-2 gap-6">
                                 <div className="flex flex-col gap-2">
                                     <label className="text-xs font-bold text-[var(--text-secondary)] uppercase tracking-wider ml-1">Full Name</label>
                                     <div className="relative">
@@ -156,7 +156,7 @@ const Profile = () => {
                                     </div>
                                 </div>
 
-                                <div className="flex flex-col gap-2 md:col-span-2">
+                                <div className="flex flex-col gap-2 col-span-2">
                                     <label className="text-xs font-bold text-[var(--text-secondary)] uppercase tracking-wider ml-1">Shipping Address</label>
                                     <div className="relative">
                                         <IoLocationOutline className="absolute left-4 top-4 text-[var(--text-secondary)]" />
@@ -173,7 +173,7 @@ const Profile = () => {
                                 </div>
 
                                 {isEditing && (
-                                    <div className="flex flex-col gap-2 md:col-span-2">
+                                    <div className="flex flex-col gap-2 col-span-2">
                                         <label className="text-xs font-bold text-[var(--text-secondary)] uppercase tracking-wider ml-1">Profile Image URL</label>
                                         <input
                                             type="text"
