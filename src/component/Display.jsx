@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { ShopContext } from "./context/ShopContext.jsx";
+import { ShopContext } from "../context/ShopContext.jsx";
 import FooterSection from "./FooterSection.jsx";
 import ProductTabs from "./ProductTabs.jsx";
 import ReviewsSection from "./Reviews.jsx";
 import DeliveryInfo from "./Delivery.jsx";
 import RelatedProducts from "./RelatedProducts.jsx";
+import { useNavigate } from "react-router-dom";
+import { IoArrowBack } from "react-icons/io5";
 
 
 import {
@@ -23,10 +25,19 @@ const Display = () => {
   const product = all_product.find((item) => item.id === Number(productId));
   const [selectedSize, setSelectedSize] = useState("8");
   const [selectedColor, setSelectedColor] = useState("Royal Brown");
+  const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen w-full relative top-16 bg-[var(--bg-color)] ">
-      <div className="grid grid-cols-2 gap-1  py-4">
+    <div className="min-h-screen w-full relative left-1 top-16 bg-[var(--bg-color)] ">
+      <div className="pt-2 sticky top-16 z-10 ">
+        <button
+          onClick={() => navigate('/')}
+          className="p-2"
+        >
+          <IoArrowBack size={30} />
+        </button>
+      </div>
+      <div className="grid grid-cols-2 gap-1  py-4 border-t-1 border-[var(--border-color)]">
         <div className="relative flex w-[550px] h-[500px] border-r px-2 py-4 ">
           <div className="flex flex-col w-30 mt-[30px] ">
             <img

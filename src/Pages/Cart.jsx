@@ -1,6 +1,6 @@
 import CartList from "../component/CartList.jsx";
 import ProductDetails from "../component/ProductDetails.jsx";
-import { ShopContext } from "../component/context/ShopContext.jsx";
+import { ShopContext } from "../context/ShopContext.jsx";
 import { useState, useContext } from "react";
 
 const Cart = () => {

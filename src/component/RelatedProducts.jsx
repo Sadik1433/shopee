@@ -1,6 +1,6 @@
 import { useContext, useMemo } from "react";
-import { ShopContext } from "./context/ShopContext";
-import Item from "./Item/Item";
+import { ShopContext } from "../context/ShopContext";
+import Item from "./Item.jsx";
 
 export default function RelatedProducts({ badge, category, heading }) {
   const { all_product } = useContext(ShopContext);

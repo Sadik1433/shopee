@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import { ShopContext } from "../component/context/ShopContext";
+import { ShopContext } from "../context/ShopContext";
 import { useNavigate } from "react-router-dom";
 import { IoArrowBack, IoCameraOutline, IoLogOutOutline, IoSaveOutline, IoPersonOutline, IoMailOutline, IoCallOutline, IoLocationOutline } from "react-icons/io5";
 

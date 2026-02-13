@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { ShopContext } from "../component/context/ShopContext";
-import Item from "../component/Item/Item";
+import { ShopContext } from "../context/ShopContext";
+import Item from "../component/Item.jsx";
 import { IoArrowBack } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 

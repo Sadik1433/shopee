@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { ShopContext } from "./context/ShopContext.jsx";
+import { ShopContext } from "../context/ShopContext.jsx";
 import { Link as ScrollLink } from "react-scroll";
 import { useLocation, Link } from "react-router-dom";
 import { SiShopee } from "react-icons/si";

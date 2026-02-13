@@ -1,8 +1,8 @@
 import FooterSection from "./FooterSection.jsx";
-import Item from "./Item/Item.jsx";
+import Item from "./Item.jsx";  
 import { useContext, useState } from "react";
 import RelatedProducts from "./RelatedProducts.jsx"
-import { ShopContext } from './context/ShopContext.jsx'
+import { ShopContext } from '../context/ShopContext.jsx'
 import { useNavigate } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
 

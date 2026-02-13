@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { ShopContext } from "../component/context/ShopContext";
+import { ShopContext } from "../context/ShopContext";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
