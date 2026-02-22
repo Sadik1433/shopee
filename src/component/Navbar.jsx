@@ -64,7 +64,7 @@ const Navbar = () => {
                 spy={true}
                 smooth={true}
                 offset={-70}
-                duration={500}
+                duration={400}
                 activeClass="!text-[var(--heading-color)] border-b-2 border-[var(--heading-color)]"
                 className="cursor-pointer hover:text-[var(--heading-color)] transition-colors py-1"
               >

@@ -2,7 +2,7 @@ import collections from "./Assets/collection";
 
 export default function Collections() {
   return (
-    <section className="h-screen px-5 py-5 max-w-[1200px] relative left-1 " id="trending">
+    <section className="px-5 py-5 max-w-[1200px] mx-auto relative left-1 " id="trending">
       <div className="mb-2">
         <h2 className="text-3xl font-bold mb-4 text-[var(--heading-color)] italic">
           Trending Collections
@@ -21,7 +21,9 @@ export default function Collections() {
             <img
               src={item.image}
               alt={item.title}
-              className="h-64 w-full object-cover transform group-hover:scale-110 transition duration-500"
+              decoding="async"
+              loading="lazy"
+              className="h-100 w-full object-cover transform group-hover:scale-110 transition duration-500"
             />
 
             <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-4">

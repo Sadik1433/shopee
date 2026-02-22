@@ -4,7 +4,7 @@ import collection_3 from "./collection_3.png";
 import collection_4 from "./collection_4.png";
 import collection_5 from "./collection_5.png";
 import collection_6 from "./collection_6.jpg";
-import collection_7 from "./collection_7.jpg";
+import collection_7 from "./collection_7.png";
 import collection_8 from "./collection_8.jpg";
 
 
@@ -47,8 +47,8 @@ const collections = [
   },
   {
     id: 7,
-    title: "Footwear",
-    description: "Step into comfort",
+    title: "Fashion",
+    description: "Make your style statement",
     image: collection_7,
   },
    {
