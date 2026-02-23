@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState, useEffect } from "react";
 
 const reviewsData = [
   {
@@ -105,14 +105,19 @@ export default function Reviews() {
       {showAll && (
         <div className="mt-4 flex justify-center">
           <button
-            onClick={() => setShowAll(false)}
-            className="px-4 py-2 border-2 border-black text-black rounded-full font-medium hover:bg-black hover:text-white transition-all duration-200"
+            onClick={() => {
+              setShowAll(false);
+              window.scrollTo(0, 0)
+            }}
+
+            className="px-4 py-2 border-2 border-black text-white rounded-full font-medium hover:bg-black hover:text-white transition-all duration-200"
           >
             Show Less
           </button>
         </div>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 }
 

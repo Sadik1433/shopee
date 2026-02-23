@@ -5,7 +5,7 @@ import collection_4 from "./collection_4.png";
 import collection_5 from "./collection_5.png";
 import collection_6 from "./collection_6.jpg";
 import collection_7 from "./collection_7.png";
-import collection_8 from "./collection_8.jpg";
+import collection_8 from "./electro_2.png";
 
 
 const collections = [
