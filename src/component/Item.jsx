@@ -8,7 +8,7 @@ const Item = memo((props) => {
   const isWatchlisted = watchlist.includes(Number(props.id));
 
   return (
-    <div className="bg-[var(--card-color)] border border-[var(--border-color)] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-2 min-w-[220px] max-w-[220px] rounded-xl relative group">
+    <div className="bg-[var(--card-color)] border border-[var(--border-color)] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 p-2 min-w-[220px] max-w-[220px] rounded-xl relative group">
       <button
         onClick={(e) => {
           e.preventDefault();

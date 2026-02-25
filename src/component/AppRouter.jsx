@@ -11,7 +11,6 @@ import Profile from '../Pages/Profile.jsx'
 import Favourite from '../Pages/Favourite.jsx';
 
 const AppRouter = () => {
-  
   return (
     <div className="relative left-12 ">
       <Routes>

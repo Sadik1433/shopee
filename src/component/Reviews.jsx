@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const reviewsData = [
   {
@@ -11,7 +11,8 @@ const reviewsData = [
     id: 2,
     name: "Nayantara",
     rating: 4,
-    review: "Good product, but the color is slightly different from the picture.",
+    review:
+      "Good product, but the color is slightly different from the picture.",
   },
   {
     id: 3,
@@ -35,7 +36,8 @@ const reviewsData = [
     id: 6,
     name: "Adnan",
     rating: 3,
-    review: "Decent for the price, but stitching could be improved in some areas.",
+    review:
+      "Decent for the price, but stitching could be improved in some areas.",
   },
   {
     id: 7,
@@ -59,7 +61,8 @@ const reviewsData = [
     id: 10,
     name: "Asif",
     rating: 4,
-    review: "Very happy with the purchase. It fits perfectly and looks premium.",
+    review:
+      "Very happy with the purchase. It fits perfectly and looks premium.",
   },
 ];
 
@@ -70,23 +73,34 @@ export default function Reviews() {
 
   return (
     <div className="mr-16 px-4">
-      <h2 className="text-2xl font-semibold mb-6">Customer Reviews</h2>
+      <h2 className="text-2xl text-[var(--heading-color)] font-semibold mb-6">
+        Customer Reviews
+      </h2>
 
       <div className="space-y-3">
         {displayedReviews.map((review) => (
-          <div key={review.id} className="p-2 rounded-xl shadow-sm border hover:shadow-md transition-shadow">
-            <div className="flex items-center gap-3">
-              <span className="text-yellow-500 text-xl">
-                {"★".repeat(review.rating)}{"☆".repeat(5 - review.rating)}
-              </span>
-              <span className="font-medium">{review.rating} out of 5</span>
+          <div
+            key={review.id}
+            className="p-2 rounded-xl shadow-sm shadow-[var(--text-color)] hover:shadow-md transition-shadow"
+          >
+            <div className="flex justify-between gap-3">
+              <h1 className="text-[var(--accent-color)] mt-1 font-bold">
+                <span className="ml-2">{review.id} </span>. {review.name}
+              </h1>
+
+              <div>
+                <span className="text-yellow-600 text-xl">
+                  {"★".repeat(review.rating)}
+                  {"☆".repeat(5 - review.rating)}
+                  <span className="font-medium mx-4">
+                    {review.rating} out of 5
+                  </span>
+                </span>
+              </div>
             </div>
-
-            <p className="mt-1 text-gray-600 italic">
-              "{review.review}"
-            </p>
-
-            <p className="text-sm text-gray-400 mt-1 font-medium">- {review.name}</p>
+            <div>
+              <p className="mt-1 text-gray-600 italic">"{review.review}"</p>
+            </div>
           </div>
         ))}
       </div>
@@ -107,17 +121,14 @@ export default function Reviews() {
           <button
             onClick={() => {
               setShowAll(false);
-              window.scrollTo(0, 0)
+              window.scrollTo(0, 0);
             }}
-
             className="px-4 py-2 border-2 border-black text-white rounded-full font-medium hover:bg-black hover:text-white transition-all duration-200"
           >
             Show Less
           </button>
         </div>
-      )
-      }
-    </div >
+      )}
+    </div>
   );
 }
-

@@ -4,7 +4,6 @@ import { TfiMenu } from "react-icons/tfi";
 import { useEffect, useState } from "react";
 
 const SideBar = () => {
-  const [active, setActive] = useState(true);
   const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
@@ -22,12 +21,12 @@ const SideBar = () => {
         <div className=" is-drawer-close:w-13 is-drawer-open:w-50 flex flex-col items-start relative top-16 ">
           <div className="absolute top-3 left-3 cursor-pointer is-drawer-close:tooltip is-drawer-open:absolute right-12  py-2 px-0">
             <label htmlFor="my-drawer-4">
-              <span className="cursor-pointer">
+              <span className="cursor-pointer text-[var(--text-color)]">
                 <TfiMenu size={28} />
               </span>
             </label>
           </div>
-          <ul className="absolute top-14 gap-5 menu  w-full px-0 py-1 text-[24px] text-[var(--heading-color)]">
+          <ul className="absolute top-14 gap-5 menu  w-full px-0 py-1 text-[24px]">
             <li>
               <Link to="/">
                 <span>🏠</span>
@@ -74,7 +73,7 @@ const SideBar = () => {
               </Link>
             </li>
             <li>
-              <button onClick={toggleTheme} className="toggle-theme">
+              <button onClick={toggleTheme} className="toggle-theme text-[var(--heading-colr)]">
                 {theme === "light" ? <FaMoon size={25} /> : <FaSun size={25} />}
                 <span className="is-drawer-close:hidden pl-4">Theme</span>
               </button>
