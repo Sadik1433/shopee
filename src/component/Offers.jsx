@@ -29,7 +29,7 @@ export default function Offers() {
           ))}
         </div>
         <div>
-          <img src={Image} alt="display" className="w-[350px]" />
+          <img src={Image} alt="display" className="w-[350px]" loading="lazy" />
         </div>
       </div>
     </section>

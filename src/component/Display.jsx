@@ -44,20 +44,24 @@ const Display = () => {
               src={product.image}
               alt="image1"
               className="max-w-40px  object-cover aspect-square rounded-md mt-3"
-            />
-            <img
-              src={product.image}
-              alt="image1"
-              className="max-w-40px  object-cover aspect-square rounded-md mt-3   "
+              loading="lazy"
             />
             <img
               src={product.image}
               alt="image1"
               className="max-w-40px  object-cover aspect-square rounded-md mt-3"
+              loading="lazy"
             />
             <img
               src={product.image}
               alt="image1"
+              loading="lazy"
+              className="max-w-40px  object-cover aspect-square rounded-md mt-3"
+            />
+            <img
+              src={product.image}
+              alt="image1"
+              loading="lazy"
               className="max-w-40px  object-cover aspect-square rounded-md mt-3  "
             />
           </div>
@@ -66,6 +70,7 @@ const Display = () => {
               <img
                 src={product.image}
                 alt="Product view"
+                loading="lazy"
                 className="h-[480px] object-cover border-blue-200  rounded-md"
               />
             </div>

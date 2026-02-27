@@ -28,6 +28,7 @@ const Item = memo((props) => {
             src={props.image}
             alt={props.name}
             className="w-full h-60 object-cover rounded-md"
+            loading="lazy"
           />
         </div>
         <div className="py-4 px-2">

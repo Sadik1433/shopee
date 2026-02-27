@@ -39,6 +39,7 @@ export default function CartList({
                           alt={product.name}
                           src={product.image}
                           className="size-full object-cover"
+                          loading="lazy"
                         />
                       </div>
 

@@ -1,13 +1,14 @@
 import { createContext, useEffect, useState, useCallback, useMemo } from "react";
 import all_product from "../component/Assets/all_product.js";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const ShopContext = createContext(null);
 
 const DefaultCart = () => {
   let cart = {};
-  for (let i = 0; i < all_product.length; i++) {
-    cart[i] = 0;
-  }
+  all_product.forEach((product) => {
+    cart[product.id] = 0;
+  });
   return cart;
 };
 
@@ -50,6 +51,14 @@ const ShopContextProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("activeUser", JSON.stringify(activeUser));
   }, [activeUser]);
+
+  const productMap = useMemo(() => {
+    const map = {};
+    all_product.forEach((product) => {
+      map[product.id] = product;
+    });
+    return map;
+  }, []);
 
   const signup = useCallback((userData) => {
     const userExists = users.find((user) => user.email === userData.email);
@@ -124,16 +133,17 @@ const ShopContextProvider = ({ children }) => {
     let totalAmount = 0;
 
     for (const itemId in cartItems) {
-      if (cartItems[itemId] > 0) {
-        const itemInfo = all_product.find(
-          (product) => product.id === Number(itemId)
-        );
-        totalAmount += itemInfo.price * cartItems[itemId];
+      const quantity = cartItems[itemId];
+      if (quantity > 0) {
+        const itemInfo = productMap[itemId];
+        if (itemInfo) {
+          totalAmount += itemInfo.price * quantity;
+        }
       }
     }
 
     return totalAmount;
-  }, [cartItems]);
+  }, [cartItems, productMap]);
 
   const contextValue = useMemo(() => ({
     all_product,

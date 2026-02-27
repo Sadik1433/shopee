@@ -10,6 +10,7 @@ export default function Home() {
             <img
               src={displyImage1}
               className="h-120 w-80 object-contain opacity-100"
+              loading="lazy"
               alt="display-image"
             />
           </div>

@@ -21,7 +21,6 @@ export default function Collections() {
             <img
               src={item.image}
               alt={item.title}
-              decoding="async"
               loading="lazy"
               className="h-100 w-full object-cover transform group-hover:scale-110 transition duration-500"
             />

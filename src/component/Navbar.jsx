@@ -6,7 +6,7 @@ import { SiShopee } from "react-icons/si";
 
 const Navbar = () => {
   const [search, setSearch] = useState("");
-  const { all_product, activeUser, logout } = useContext(ShopContext);
+  const { all_product, activeUser} = useContext(ShopContext);
   const filteredProducts = all_product.filter(
     (product) =>
       product.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -112,6 +112,7 @@ const Navbar = () => {
                   <img
                     src={activeUser.profileImage}
                     alt="avatar"
+                    loading="lazy"
                     className="w-10 object-center rounded-full cursor-pointer hover:scale-110 transition-all"
                   />
                 </Link>
