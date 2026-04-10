@@ -1,31 +1,31 @@
 import offers from "./Assets/offer_zone";
-import Image from "./Assets/profile_bg-1.png";
+import Image from "./Assets/display_1.png";
 
 export default function Offers() {
   return (
-    <section id="offer" className="px-0 py-4">
-      <h2 className="text-4xl font-bold mb-5 text-[var(--heading-color)] ml-9">
-        Special Offers
-      </h2>
+    <section id="offer" className="py-5">
       <div className="flex justify-evenly" data-aos="fade-right">
-        <div className="flex flex-col gap-4 mx-auto overflow-visible ">
+        <div className="flex flex-col gap-4 py-8 ">
+          <h2 className="text-4xl font-bold mb-5 text-[var(--heading-color)]">
+            Special Offers
+          </h2>
           {offers.map((offer, index) => (
-            <div
+            <div  
               key={index}
               className={`${offer.bg} min-w-[600px]  text-[var(--text-color)] rounded-2xl px-5 py-2  shadow-lg flex flex-col border-l-2 hover:scale-y-105 transition-all duration-300 hover:shadow-2xl hover:border-blue-200`}
             >
-                <div className="flex justify-between items-center">
-                  <h3 className="text-2xl font-italic text-[var(--heading-secondary)]">
-                    {offer.title}
-                  </h3>
-                  <p className="text-1xl font-bold  ml-3 text-[var(--accent-color)] ">
-                    {offer.discount}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm mt-2 opacity-50">{offer.desc}</p>
-                </div>
+              <div className="flex justify-between items-center">
+                <h3 className="text-2xl font-italic text-[var(--heading-secondary)]">
+                  {offer.title}
+                </h3>
+                <p className="text-1xl font-bold  ml-3 text-[var(--accent-color)] ">
+                  {offer.discount}
+                </p>
               </div>
+              <div>
+                <p className="text-sm mt-2 opacity-50">{offer.desc}</p>
+              </div>
+            </div>
           ))}
         </div>
         <div data-aos="fade-left">
