@@ -1,5 +1,4 @@
 import displyImage1 from "./Assets/display-1.png";
-import { FaArrowRight } from "react-icons/fa";
 
 export default function Home() {
   return (
@@ -22,11 +21,6 @@ export default function Home() {
               With so much demand for a style of board where every aspect of it
               flews, we created a new series
             </p>
-            <div className="flex flex-row justify-items-start">
-              <button className="btn flex flex-row rounded-xl text-white border-none ">
-                Explore Now <FaArrowRight className=" text-2xl p-1" />
-              </button>
-            </div>
           </div>
         </div>
       </div>

@@ -37,32 +37,32 @@ const Display = () => {
           <IoArrowBack size={30} />
         </button>
       </div>
-      <div className="grid grid-cols-2 gap-1  py-4 border-t-1 border-[var(--border-color)]">
-        <div className="relative flex w-[550px] h-[500px] border-r px-2 py-4 ">
-          <div className="flex flex-col w-30 mt-[30px] ">
+      <div className="grid grid-cols-2 gap-1 border-t-1 border-[var(--border-color)]">
+        <div className="relative flex w-[550px] h-[480px] border-r px-2">
+          <div className="flex flex-col h-full mt-[30px]  ">
             <img
-              src={product.image}
+              src=  {product.image}
               alt="image1"
-              className="max-w-40px  object-cover aspect-square rounded-md mt-3"
+              className="object-cover aspect-square rounded-md mt-3 w-30 min-h-[110px]"
               loading="lazy"
             />
             <img
               src={product.image}
               alt="image1"
-              className="max-w-40px  object-cover aspect-square rounded-md mt-3"
+              className="object-cover aspect-square rounded-md mt-3 w-30 min-h-[110px]"
               loading="lazy"
             />
             <img
               src={product.image}
               alt="image1"
               loading="lazy"
-              className="max-w-40px  object-cover aspect-square rounded-md mt-3"
+              className="object-cover aspect-square rounded-md mt-3 w-30 min-h-[110px]"
             />
             <img
               src={product.image}
               alt="image1"
               loading="lazy"
-              className="max-w-40px  object-cover aspect-square rounded-md mt-3  "
+              className=" object-cover aspect-square rounded-md mt-3 w-30 min-h-[110px]"
             />
           </div>
           <div className="flex">
@@ -103,7 +103,7 @@ const Display = () => {
               <h1 className="text-3xl text-[var(--text-color)] font-bold mb-4 tracking-tight">
                 {product.name}
               </h1>
-              <div className="flex flex-row items-center justify-between w-full gap-4 mb-6">
+              <div className="flex flex-row items-center justify-between w-full mb-1">
                 <div className="flex items-center gap-3">
                   <span className="text-2xl font-bold text-[var(--heading-color)]">
                     Rs . {product.price.toFixed(2)}
@@ -112,7 +112,7 @@ const Display = () => {
                     Rs . {product.actualPrice.toFixed(2)}
                   </span>
                 </div>
-                <div className="flex items-center gap-2 bg-[var(--input-color)] px-3 py-1.5 rounded-full">
+                <div className="flex items-center gap-2 bg-[var(--input-color)] px-3 py-1 rounded-full">
                   <IoStar className="text-yellow-400 text-lg" />
                   <span className="text-[var(--text-color)] font-bold">
                     {product.rating}
@@ -123,14 +123,14 @@ const Display = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div>  
 
-          <div className="mb-6 border-t border-[var(--border-color)] border-dashed pt-6">
+          <div className="mb-3 border-t border-[var(--border-color)] border-dashed pt-3">
             <h2 className="text-[var(--text-color)] font-bold mb-3 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--heading-color)]"></span>
+              <span className="w-1.5 h-1.5 text-bold rounded-full bg-[var(--heading-color)]"></span>
               Description
             </h2>
-            <p className="text-[0.95rem] text-[var(--text-secondary)] leading-relaxed">
+            <p className="text-[0.95rem] text-[var(--text-secondary)] leading-relaxed">   
               Boba etiam ut bulla tea est potus electus singulari compositione
               saporum et textuum, quae in Taiwan annis 1980 orta sunt. Boba
               refert ad pitas marnicas tapiocas in fundo potus inventas, quae

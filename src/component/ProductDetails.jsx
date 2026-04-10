@@ -35,7 +35,7 @@ const ProductDetails = ({ product, cartItems }) => {
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-[250px] h-[400px] object-center rounded-2xl border border-[var(--border-color)] shadow-sm"
+                className="h-[320px] object-center rounded-2xl border border-[var(--border-color)] shadow-sm"
               />
             </div>
           </div>

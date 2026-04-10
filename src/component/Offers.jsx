@@ -7,12 +7,12 @@ export default function Offers() {
       <h2 className="text-4xl font-bold mb-5 text-[var(--heading-color)] ml-9">
         Special Offers
       </h2>
-      <div className="flex justify-evenly">
+      <div className="flex justify-evenly" data-aos="fade-right">
         <div className="flex flex-col gap-4 mx-auto overflow-visible ">
           {offers.map((offer, index) => (
             <div
               key={index}
-              className={`${offer.bg} min-w-[600px]  text-[var(--text-color)] rounded-2xl px-5 py-2 border-1 shadow-lg flex flex-col hover:scale-y-80`}
+              className={`${offer.bg} min-w-[600px]  text-[var(--text-color)] rounded-2xl px-5 py-2  shadow-lg flex flex-col border-l-2 hover:scale-y-105 transition-all duration-300 hover:shadow-2xl hover:border-blue-200`}
             >
                 <div className="flex justify-between items-center">
                   <h3 className="text-2xl font-italic text-[var(--heading-secondary)]">
@@ -28,7 +28,7 @@ export default function Offers() {
               </div>
           ))}
         </div>
-        <div>
+        <div data-aos="fade-left">
           <img src={Image} alt="display" className="w-[350px]" loading="lazy" />
         </div>
       </div>

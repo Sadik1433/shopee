@@ -1,5 +1,7 @@
 import collections from "./Assets/collection";
 
+const aosAnimations = ["fade-right", "fade-left", "fade-up", "fade-down"]
+
 export default function Collections() {
   return (
     <section className="px-5 py-5 max-w-[1200px] mx-auto relative left-1 " id="trending">
@@ -13,16 +15,17 @@ export default function Collections() {
       </div>
 
       <div className="grid grid-cols-4 gap-3">
-        {collections.map((item) => (
+        {collections.map((item, index) => (
           <div
             key={item.id}
+             data-aos={aosAnimations[index % aosAnimations.length]}
             className="group relative rounded-xl overflow-hidden shadow-lg cursor-pointer"
           >
             <img
               src={item.image}
               alt={item.title}
               loading="lazy"
-              className="h-100 w-full object-cover transform group-hover:scale-110 transition duration-500"
+              className="h-80 w-full object-cover transform group-hover:scale-110 transition duration-500"
             />
 
             <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-4">

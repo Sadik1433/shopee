@@ -8,7 +8,7 @@ const Favourite = () => {
     const { watchlist, all_product } = useContext(ShopContext);
     const navigate = useNavigate();
     return (
-        <div className="relative top-15 bg-[var(--bg-color)]">
+        <div className="relative top-15 bg-[var(--bg-color)] min-h-screen">
             {all_product.some(p => watchlist.includes(p.id)) && (
                 <div className="mt-12 px-4">
                     <div className="text-center w-full flex  gap-2 border-b-2 border-gray-200">
