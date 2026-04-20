@@ -10,6 +10,7 @@ const Login = () => {
     username: "",
     email: "",
     password: "",
+    phoneNumber: "",
   });
 
   const changeHandler = (e) => {
@@ -20,7 +21,7 @@ const Login = () => {
     e.preventDefault();
     let success = false;
     if (state === "Sign Up") {
-      if (!formData.username || !formData.email || !formData.password) {
+      if (!formData.username || !formData.email || !formData.password || !formData.phoneNumber) {
         alert("Please fill all fields");
         return;
       }
@@ -71,6 +72,17 @@ const Login = () => {
                 type="email"
                 name="email"
                 value={formData.email}
+                onChange={changeHandler}
+                placeholder="email@example.com"
+                className="w-full px-4 py-3 rounded-xl bg-[var(--input-color)] border border-[var(--border-color)] focus:border-[var(--heading-color)] outline-none transition-all placeholder:text-[var(--text-secondary)]/50"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label className="text-sm font-medium text-[var(--text-color)] ml-1">Phone Number</label>
+              <input
+                type="tel"
+                name="phoneNumber"
+                value={formData.phoneNumber}
                 onChange={changeHandler}
                 placeholder="email@example.com"
                 className="w-full px-4 py-3 rounded-xl bg-[var(--input-color)] border border-[var(--border-color)] focus:border-[var(--heading-color)] outline-none transition-all placeholder:text-[var(--text-secondary)]/50"
