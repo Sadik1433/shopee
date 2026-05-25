@@ -8,7 +8,7 @@ import { IoArrowBack } from "react-icons/io5";
 
 const ProductCategory = (props) => {
   const [sortBy, setSortBy] = useState("sort");
-  const [search, setSearch] = useState("");
+  const [search] = useState("");
   const { all_product } = useContext(ShopContext);
   const navigate = useNavigate();
   const filteredAndSortedProducts = all_product
