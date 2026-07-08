@@ -9,6 +9,7 @@ import banner_women from "./Assets/banner_women.png";
 import Cart from '../Pages/Cart.jsx'
 import Profile from '../Pages/Profile.jsx'
 import Favourite from '../Pages/Favourite.jsx';
+import Orders from '../Pages/Orders.jsx';
 
 const AppRouter = () => {
   return (
@@ -40,6 +41,7 @@ const AppRouter = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/cart" element={<Cart  />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/orders" element={<Orders />} />
       </Routes>
     </div>
   );

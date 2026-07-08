@@ -1,12 +1,13 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { ShopContext } from "../context/ShopContext.jsx";
 import { Link as ScrollLink } from "react-scroll";
 import { useLocation, Link } from "react-router-dom";
 import { SiShopee } from "react-icons/si";
+import { FaSun, FaMoon } from "react-icons/fa";
 
 const Navbar = () => {
   const [search, setSearch] = useState("");
-  const { all_product, activeUser} = useContext(ShopContext);
+  const { all_product, activeUser } = useContext(ShopContext);
   const filteredProducts = all_product.filter(
     (product) =>
       product.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -15,13 +16,25 @@ const Navbar = () => {
 
   const location = useLocation();
 
+  const [theme, setTheme] = useState("dark");
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
+
   return (
     <div className="navbar max-h-[80px] fixed top-0 right-0 z-100 bg-[var(--navbar-bg-color)] backdrop-blur-md border-b border-[var(--border-color)] shadow-sm">
       <div className="flex-1">
         <div className="">
           <SiShopee className="inline-block text-3xl relative left-1 top-2" />
           <br />
-          <span className="inline-block text-xl font-bold relative left-7  bottom-1 font-serif">Shopee</span>
+          <span className="inline-block text-xl font-bold relative left-7  bottom-1 font-serif">
+            Shopee
+          </span>
         </div>
       </div>
       <div className="fixed top-4 left-64 w-100">
@@ -51,7 +64,9 @@ const Navbar = () => {
               </Link>
             ))
           ) : (
-            <div className="p-3 text-[var(--text-secondary)] italic">No products found.</div>
+            <div className="p-3 text-[var(--text-secondary)] italic">
+              No products found.
+            </div>
           )}
         </div>
       )}
@@ -108,12 +123,19 @@ const Navbar = () => {
           <li>
             {activeUser ? (
               <div className="flex items-center gap-12">
+                <button onClick={toggleTheme} className="">
+                  {theme === "light" ? (
+                    <FaMoon size={25} />
+                  ) : (
+                    <FaSun size={25} />
+                  )}
+                </button>
                 <Link to="/profile">
                   <img
                     src={activeUser.profileImage}
                     alt="avatar"
                     loading="lazy"
-                    className="w-10 object-center rounded-full cursor-pointer hover:scale-110 transition-all"
+                    className="w-15 object-center rounded-full cursor-pointer hover:scale-110 transition-all"
                   />
                 </Link>
               </div>

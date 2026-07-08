@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext.jsx";
 import FooterSection from "./FooterSection.jsx";
@@ -19,13 +18,42 @@ import {
 } from "react-icons/io5";
 
 const Display = () => {
-  const { all_product, addToCart, watchlist, toggleWatchlist } = useContext(ShopContext);
+  const { all_product, addToCart, watchlist, toggleWatchlist, activeUser } = useContext(ShopContext);
   const { productId } = useParams();
   const isFavorite = watchlist.includes(Number(productId));
   const product = all_product.find((item) => item.id === Number(productId));
-  const [selectedSize, setSelectedSize] = useState("8");
-  const [selectedColor, setSelectedColor] = useState("Royal Brown");
+  const [selectedSize, setSelectedSize] = useState("");
+  const [selectedColor, setSelectedColor] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (product) {
+      setSelectedSize(product.sizes && product.sizes.length > 0 ? product.sizes[0] : "");
+      setSelectedColor(product.colors && product.colors.length > 0 ? product.colors[0].name : "");
+    }
+  }, [product]);
+
+  const handleBuyNow = () => {
+    if (!activeUser) {
+      navigate("/login");
+      return;
+    }
+    navigate("/cart", {
+      state: {
+        buyNowProduct: {
+          id: product.id,
+          name: product.name,
+          image: product.image,
+          price: product.price,
+          category: product.category,
+          colors: product.colors || [],
+          sizes: product.sizes || [],
+          selectedColor,
+          selectedSize,
+        },
+      },
+    });
+  };
 
   return (
     <div className="min-h-screen w-full relative left-1 top-16 bg-[var(--bg-color)] ">
@@ -146,7 +174,7 @@ const Display = () => {
               <div className="flex justify-between items-center mb-2">
                 <h2 className="font-medium dark:text-[#abc2d3] text-gray-400">
                   Color:
-                  <span className="text-gray-700 dark:text-slate-400 font-semibold">
+                  <span className="text-gray-700 dark:text-slate-400 font-semibold ml-1">
                     {selectedColor}
                   </span>
                 </h2>
@@ -175,21 +203,23 @@ const Display = () => {
             <div className="mb-10">
               <div className="flex justify-between items-center mb-2">
                 <h2 className="font-medium dark:text-[#abc2d3] text-gray-400">
-                  Size:
-                  <span className="font-semibold dark:text-slate-400 text-gray-700">
+                  {product.category === "electronics" ? "Specification:" : "Size:"}
+                  <span className="font-semibold dark:text-slate-400 text-gray-700 ml-1">
                     {selectedSize}
                   </span>
                 </h2>
-                <button className="text-gray-600 text-[0.8rem] dark:text-[#abc2d3] underline">
-                  View Size Chart
-                </button>
+                {product.category !== "electronics" && (
+                  <button className="text-gray-600 text-[0.8rem] dark:text-[#abc2d3] underline">
+                    View Size Chart
+                  </button>
+                )}
               </div>
               <div className="flex w-full flex-wrap gap-2">
                 {product.sizes.map((size) => (
                   <button
                     key={size}
                     onClick={() => setSelectedSize(size)}
-                    className={`px-4 py-2 max-w-[60px] grow rounded-md border ${selectedSize === size
+                    className={`px-4 py-2 min-w-[60px] max-w-max rounded-md border text-sm transition-all duration-200 ${selectedSize === size
                       ? "border-[#0FABCA] bg-[#0FABCA] text-white"
                       : "border-gray-200 dark:border-slate-700 dark:text-[#abc2d3] hover:border-[#0FABCA]"
                       }`}
@@ -208,8 +238,11 @@ const Display = () => {
             >
               Add To Cart
             </button>
-            <button className="grow py-3 px-6 border dark:border-slate-700 dark:hover:bg-slate-900 dark:text-[#abc2d3] border-gray-300 text-gray-600 rounded-md">
-              Buy Now
+            <button
+              onClick={handleBuyNow}
+              className="grow py-3 px-6 bg-[var(--btn-color)] hover:bg-[var(--btn-color)]/90 text-white font-bold rounded-md flex items-center justify-center gap-2 transition-all active:scale-[0.98] hover:shadow-lg hover:shadow-[var(--btn-color)]/30"
+            >
+              🛍️ Buy Now
             </button>
           </div>
         </div>

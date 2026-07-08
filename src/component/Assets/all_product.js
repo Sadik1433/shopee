@@ -49,11 +49,27 @@ import img48 from "./electro_10.png";
 import img49 from "./electro_11.png";
 import img50 from "./electro_12.png";
 
-const colors = [
-  { name: "Royal Brown", class: "bg-[#654321]" },
-  { name: "Light Gray", class: "bg-gray-200" },
-  { name: "Steel Blue", class: "bg-[#4682B4]" },
-  { name: "Navy", class: "bg-navy-900" },
+// Define realistic category-specific color palettes
+const clothingColors = [
+  { name: "Classic Black", class: "bg-[#111111]" },
+  { name: "Navy Blue", class: "bg-[#1D3557]" },
+  { name: "Olive Green", class: "bg-[#556B2F]" },
+  { name: "Burgundy Red", class: "bg-[#800020]" },
+  { name: "Off White", class: "bg-[#F8F9FA] border border-gray-300" },
+];
+
+const kidsColors = [
+  { name: "Sky Blue", class: "bg-[#87CEEB]" },
+  { name: "Pastel Pink", class: "bg-[#FFB7B2]" },
+  { name: "Lemon Yellow", class: "bg-[#FFE5B4]" },
+  { name: "Mint Green", class: "bg-[#98FF98]" },
+];
+
+const techColors = [
+  { name: "Matte Black", class: "bg-[#1A1A1A]" },
+  { name: "Space Gray", class: "bg-[#5A5D64]" },
+  { name: "Pearl White", class: "bg-[#F3F2ED] border border-gray-300" },
+  { name: "Metallic Blue", class: "bg-[#4682B4]" },
 ];
 
 const all_product = [
@@ -67,8 +83,8 @@ const all_product = [
     rating: 4.8,
     badge: "Trending",
     description: "Comfortable black printed pants for all-day style.",
-    sizes: ["S", "M", "L", "XL", "XXL"],
-    colors,
+    sizes: ["30", "32", "34", "36"],
+    colors: clothingColors,
   },
   {
     id: 2,
@@ -80,8 +96,8 @@ const all_product = [
     rating: 4.5,
     badge: "Offers",
     description: "Slim-fit olive pants suitable for casual and office wear.",
-    sizes: ["S", "M", "L", "XL"],
-    colors,
+    sizes: ["30", "32", "34", "36"],
+    colors: clothingColors,
   },
   {
     id: 3,
@@ -93,8 +109,8 @@ const all_product = [
     rating: 4.6,
     badge: "Best Seller",
     description: "Classic grey pants designed for comfort and durability.",
-    sizes: ["M", "L", "XL", "XXL"],
-    colors,
+    sizes: ["32", "34", "36"],
+    colors: clothingColors,
   },
   {
     id: 4,
@@ -106,8 +122,8 @@ const all_product = [
     rating: 4.4,
     badge: "Offers",
     description: "Navy blue pants with a modern fit for daily use.",
-    sizes: ["S", "M", "L", "XL"],
-    colors,
+    sizes: ["30", "32", "34"],
+    colors: clothingColors,
   },
   {
     id: 5,
@@ -119,8 +135,8 @@ const all_product = [
     rating: 4.7,
     badge: "Trending",
     description: "Soft cotton pants that offer all-day breathability.",
-    sizes: ["M", "L", "XL", "XXL"],
-    colors,
+    sizes: ["32", "34", "36"],
+    colors: clothingColors,
   },
   {
     id: 6,
@@ -132,8 +148,8 @@ const all_product = [
     rating: 4.3,
     badge: "Offers",
     description: "Regular fit pants designed for maximum comfort.",
-    sizes: ["S", "M", "L", "XL"],
-    colors,
+    sizes: ["30", "32", "34", "36"],
+    colors: clothingColors,
   },
   {
     id: 7,
@@ -145,8 +161,8 @@ const all_product = [
     rating: 4.8,
     badge: "Best Seller",
     description: "Stretchable pants ideal for long working hours.",
-    sizes: ["M", "L", "XL", "XXL"],
-    colors,
+    sizes: ["32", "34", "36"],
+    colors: clothingColors,
   },
   {
     id: 8,
@@ -158,8 +174,8 @@ const all_product = [
     rating: 4.2,
     badge: "Offers",
     description: "Lightweight casual pants for everyday outings.",
-    sizes: ["S", "M", "L"],
-    colors,
+    sizes: ["30", "32", "34"],
+    colors: clothingColors,
   },
   {
     id: 9,
@@ -171,8 +187,8 @@ const all_product = [
     rating: 4.7,
     badge: "Offers",
     description: "Formal pants crafted for professional styling.",
-    sizes: ["M", "L", "XL", "XXL"],
-    colors,
+    sizes: ["32", "34", "36"],
+    colors: clothingColors,
   },
   {
     id: 10,
@@ -184,8 +200,8 @@ const all_product = [
     rating: 4.5,
     badge: "Trending",
     description: "Tapered fit pants offering a sharp modern look.",
-    sizes: ["S", "M", "L", "XL"],
-    colors,
+    sizes: ["30", "32", "34"],
+    colors: clothingColors,
   },
 
   // SHIRTS
@@ -200,7 +216,7 @@ const all_product = [
     badge: "Trending",
     description: "Casual blue shirt made with breathable fabric.",
     sizes: ["S", "M", "L", "XL"],
-    colors,
+    colors: clothingColors,
   },
   {
     id: 12,
@@ -213,7 +229,7 @@ const all_product = [
     badge: "Best Seller",
     description: "Classic white cotton shirt for formal occasions.",
     sizes: ["M", "L", "XL", "XXL"],
-    colors,
+    colors: clothingColors,
   },
   {
     id: 13,
@@ -226,7 +242,7 @@ const all_product = [
     badge: "Offers",
     description: "Trendy checked shirt for casual styling.",
     sizes: ["S", "M", "L"],
-    colors,
+    colors: clothingColors,
   },
   {
     id: 14,
@@ -239,7 +255,7 @@ const all_product = [
     badge: "Offers",
     description: "Slim fit shirt designed for a sharp appearance.",
     sizes: ["M", "L", "XL"],
-    colors,
+    colors: clothingColors,
   },
   {
     id: 15,
@@ -252,7 +268,7 @@ const all_product = [
     badge: "Offers",
     description: "Printed shirt perfect for casual outings.",
     sizes: ["S", "M", "L", "XL"],
-    colors,
+    colors: clothingColors,
   },
   {
     id: 16,
@@ -265,7 +281,7 @@ const all_product = [
     badge: "Trending",
     description: "Office wear shirt with a clean professional look.",
     sizes: ["M", "L", "XL", "XXL"],
-    colors,
+    colors: clothingColors,
   },
   {
     id: 17,
@@ -278,7 +294,7 @@ const all_product = [
     badge: "Best Seller",
     description: "Denim-style shirt with a rugged casual appeal.",
     sizes: ["S", "M", "L", "XL"],
-    colors,
+    colors: clothingColors,
   },
   {
     id: 18,
@@ -291,7 +307,7 @@ const all_product = [
     badge: "Offers",
     description: "Lightweight summer shirt for hot days.",
     sizes: ["S", "M", "L"],
-    colors,
+    colors: clothingColors,
   },
   {
     id: 19,
@@ -304,7 +320,7 @@ const all_product = [
     badge: "Offers",
     description: "Formal blue shirt ideal for meetings and events.",
     sizes: ["M", "L", "XL", "XXL"],
-    colors,
+    colors: clothingColors,
   },
   {
     id: 20,
@@ -317,8 +333,9 @@ const all_product = [
     badge: "Offers",
     description: "Everyday wear shirt combining comfort and style.",
     sizes: ["S", "M", "L", "XL"],
-    colors,
+    colors: clothingColors,
   },
+
   // WOMEN (21–30)
   {
     id: 21,
@@ -331,7 +348,7 @@ const all_product = [
     badge: "Trending",
     description: "Floral printed casual top perfect for daily wear.",
     sizes: ["S", "M", "L", "XL"],
-    colors,
+    colors: clothingColors,
   },
   {
     id: 22,
@@ -344,7 +361,7 @@ const all_product = [
     badge: "Best Seller",
     description: "Comfortable cotton kurti ideal for everyday use.",
     sizes: ["M", "L", "XL", "XXL"],
-    colors,
+    colors: clothingColors,
   },
   {
     id: 23,
@@ -357,7 +374,7 @@ const all_product = [
     badge: "Offers",
     description: "Straight fit pants designed for modern styling.",
     sizes: ["S", "M", "L", "XL"],
-    colors,
+    colors: clothingColors,
   },
   {
     id: 24,
@@ -370,7 +387,7 @@ const all_product = [
     badge: "Offers",
     description: "Printed kurti with elegant patterns and soft fabric.",
     sizes: ["M", "L", "XL"],
-    colors,
+    colors: clothingColors,
   },
   {
     id: 25,
@@ -383,7 +400,7 @@ const all_product = [
     badge: "Trending",
     description: "Lightweight summer dress for a stylish look.",
     sizes: ["S", "M", "L"],
-    colors,
+    colors: clothingColors,
   },
   {
     id: 26,
@@ -396,7 +413,7 @@ const all_product = [
     badge: "Offers",
     description: "Elegant office wear top with a professional touch.",
     sizes: ["S", "M", "L", "XL"],
-    colors,
+    colors: clothingColors,
   },
   {
     id: 27,
@@ -409,7 +426,7 @@ const all_product = [
     badge: "Offers",
     description: "Casual t-shirt suitable for daily comfort.",
     sizes: ["S", "M", "L"],
-    colors,
+    colors: clothingColors,
   },
   {
     id: 28,
@@ -422,7 +439,7 @@ const all_product = [
     badge: "Offers",
     description: "Ethnic kurti with traditional design and comfort.",
     sizes: ["M", "L", "XL", "XXL"],
-    colors,
+    colors: clothingColors,
   },
   {
     id: 29,
@@ -435,7 +452,7 @@ const all_product = [
     badge: "Best Seller",
     description: "Slim fit jeans offering both style and comfort.",
     sizes: ["S", "M", "L", "XL"],
-    colors,
+    colors: clothingColors,
   },
   {
     id: 30,
@@ -448,7 +465,7 @@ const all_product = [
     badge: "Offers",
     description: "Casual wear top ideal for everyday outings.",
     sizes: ["S", "M", "L"],
-    colors,
+    colors: clothingColors,
   },
 
   // KIDS (31–38)
@@ -462,8 +479,8 @@ const all_product = [
     rating: 4.6,
     badge: "Trending",
     description: "Soft printed t-shirt for kids daily comfort.",
-    sizes: ["XS", "S", "M"],
-    colors,
+    sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y"],
+    colors: kidsColors,
   },
   {
     id: 32,
@@ -475,8 +492,8 @@ const all_product = [
     rating: 4.4,
     badge: "Offers",
     description: "Casual shirt made with breathable fabric.",
-    sizes: ["XS", "S", "M"],
-    colors,
+    sizes: ["2-3Y", "4-5Y", "6-7Y"],
+    colors: kidsColors,
   },
   {
     id: 33,
@@ -488,8 +505,8 @@ const all_product = [
     rating: 4.5,
     badge: "Offers",
     description: "Comfortable cotton pants for everyday play.",
-    sizes: ["XS", "S", "M"],
-    colors,
+    sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y"],
+    colors: kidsColors,
   },
   {
     id: 34,
@@ -501,8 +518,8 @@ const all_product = [
     rating: 4.7,
     badge: "Best Seller",
     description: "Stylish party wear dress for special occasions.",
-    sizes: ["XS", "S", "M"],
-    colors,
+    sizes: ["4-5Y", "6-7Y", "8-9Y"],
+    colors: kidsColors,
   },
   {
     id: 35,
@@ -514,8 +531,8 @@ const all_product = [
     rating: 4.3,
     badge: "Offers",
     description: "Denim shorts perfect for outdoor activities.",
-    sizes: ["XS", "S", "M"],
-    colors,
+    sizes: ["2-3Y", "4-5Y", "6-7Y"],
+    colors: kidsColors,
   },
   {
     id: 36,
@@ -527,8 +544,8 @@ const all_product = [
     rating: 4.6,
     badge: "Trending",
     description: "Warm hoodie designed for winter comfort.",
-    sizes: ["S", "M"],
-    colors,
+    sizes: ["4-5Y", "6-7Y", "8-9Y"],
+    colors: kidsColors,
   },
   {
     id: 37,
@@ -540,8 +557,8 @@ const all_product = [
     rating: 4.5,
     badge: "Offers",
     description: "Sportswear set for active kids.",
-    sizes: ["XS", "S", "M"],
-    colors,
+    sizes: ["4-5Y", "6-7Y", "8-9Y"],
+    colors: kidsColors,
   },
   {
     id: 38,
@@ -553,8 +570,8 @@ const all_product = [
     rating: 4.2,
     badge: "Offers",
     description: "Everyday t-shirt with soft fabric.",
-    sizes: ["XS", "S", "M"],
-    colors,
+    sizes: ["2-3Y", "4-5Y", "6-7Y"],
+    colors: kidsColors,
   },
 
   // ELECTRONICS (39–50)
@@ -568,7 +585,8 @@ const all_product = [
     rating: 4.6,
     badge: "Trending",
     description: "High-quality wireless headphones with deep bass.",
-    colors,
+    sizes: ["Standard", "Pro ANC"],
+    colors: techColors,
   },
   {
     id: 40,
@@ -580,7 +598,8 @@ const all_product = [
     rating: 4.7,
     badge: "Best Seller",
     description: "Smart watch with fitness and health tracking.",
-    colors,
+    sizes: ["40mm", "44mm"],
+    colors: techColors,
   },
   {
     id: 41,
@@ -592,7 +611,8 @@ const all_product = [
     rating: 4.5,
     badge: "Offers",
     description: "Portable speaker with powerful sound output.",
-    colors,
+    sizes: ["Standard", "XL Bass"],
+    colors: techColors,
   },
   {
     id: 42,
@@ -604,7 +624,8 @@ const all_product = [
     rating: 4.6,
     badge: "Trending",
     description: "Compact earbuds with noise isolation.",
-    colors,
+    sizes: ["Standard", "Pro ANC"],
+    colors: techColors,
   },
   {
     id: 43,
@@ -616,7 +637,8 @@ const all_product = [
     rating: 4.3,
     badge: "Offers",
     description: "Fast charging USB power adapter.",
-    colors,
+    sizes: ["20W Fast", "65W GaN"],
+    colors: techColors,
   },
   {
     id: 44,
@@ -628,7 +650,8 @@ const all_product = [
     rating: 4.7,
     badge: "Best Seller",
     description: "High-capacity power bank for long usage.",
-    colors,
+    sizes: ["10000mAh", "20000mAh"],
+    colors: techColors,
   },
   {
     id: 45,
@@ -640,7 +663,8 @@ const all_product = [
     rating: 4.4,
     badge: "Offers",
     description: "Ergonomic wireless mouse for smooth control.",
-    colors,
+    sizes: ["Silent Click", "Gaming Edition"],
+    colors: techColors,
   },
   {
     id: 46,
@@ -652,7 +676,8 @@ const all_product = [
     rating: 4.8,
     badge: "Offers",
     description: "Mechanical keyboard with RGB lighting.",
-    colors,
+    sizes: ["Blue Switches", "Red Switches", "Brown Switches"],
+    colors: techColors,
   },
   {
     id: 47,
@@ -664,7 +689,8 @@ const all_product = [
     rating: 4.5,
     badge: "Trending",
     description: "Cooling pad to prevent laptop overheating.",
-    colors,
+    sizes: ["Dual Fan", "Quad Fan"],
+    colors: techColors,
   },
   {
     id: 48,
@@ -676,7 +702,8 @@ const all_product = [
     rating: 4.6,
     badge: "Offers",
     description: "HD webcam suitable for online meetings.",
-    colors,
+    sizes: ["1080p Full HD", "4K Ultra HD"],
+    colors: techColors,
   },
   {
     id: 49,
@@ -688,7 +715,8 @@ const all_product = [
     rating: 4.7,
     badge: "Offers",
     description: "Noise cancelling headset for clear audio.",
-    colors,
+    sizes: ["Wired", "Wireless BT"],
+    colors: techColors,
   },
   {
     id: 50,
@@ -700,7 +728,9 @@ const all_product = [
     rating: 4.4,
     badge: "Offers",
     description: "Smart plug to control devices remotely.",
-    colors,
+    sizes: ["1-Pack", "2-Pack", "4-Pack"],
+    colors: techColors,
   },
 ];
+
 export default all_product;

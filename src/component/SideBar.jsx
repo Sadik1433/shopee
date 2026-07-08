@@ -1,18 +1,6 @@
 import { Link } from "react-router-dom";
-import { FaSun, FaMoon } from "react-icons/fa";
 import { TfiMenu } from "react-icons/tfi";
-import { useEffect, useState } from "react";
-
 const SideBar = () => {
-  const [theme, setTheme] = useState("dark");
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
-  };
 
   return (
     <div className="drawer  drawer-open  z-10  w-10 h-screen fixed top-0 left-0 bottom-0  text-[var(--text-color) ]">
@@ -73,10 +61,10 @@ const SideBar = () => {
               </Link>
             </li>
             <li>
-              <button onClick={toggleTheme} className="toggle-theme text-[var(--heading-colr)]">
-                {theme === "light" ? <FaMoon size={25} /> : <FaSun size={25} />}
-                <span className="is-drawer-close:hidden pl-4">Theme</span>
-              </button>
+              <Link to="/orders">
+                <span>📦</span>
+                <span className="is-drawer-close:hidden px-2">Orders</span>
+              </Link>
             </li>
           </ul>
         </div>

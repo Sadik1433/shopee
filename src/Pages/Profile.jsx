@@ -11,9 +11,10 @@ import {
   IoCallOutline,
   IoLocationOutline,
 } from "react-icons/io5";
+import { MdShoppingBag } from "react-icons/md";
 
 const Profile = () => {
-  const { activeUser, updateProfile, logout } = useContext(ShopContext);
+  const { activeUser, updateProfile, logout, orders } = useContext(ShopContext);
   const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
@@ -24,7 +25,7 @@ const Profile = () => {
     profileImage: "",
   });
  
-  console.log(formData)
+  const userOrders = activeUser ? orders.filter((o) => o.userEmail === activeUser.email) : [];
   useEffect(() => {
     if (!activeUser) {
       navigate("/login");
@@ -225,6 +226,48 @@ const Profile = () => {
                   </div>
                 )}
               </div>
+            </div>
+          </div>
+          {/* Orders Quick View */}
+          <div className="col-span-3 mt-4">
+            <div className="bg-[var(--card-color)] border border-[var(--border-color)] rounded-3xl p-6 shadow-xl backdrop-blur-sm">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <MdShoppingBag size={24} className="text-[var(--heading-color)]" />
+                  <h3 className="text-xl font-bold text-[var(--heading-color)]">My Orders</h3>
+                </div>
+                <button
+                  onClick={() => navigate("/orders")}
+                  className="px-6 py-2 bg-[var(--btn-color)] text-white rounded-2xl font-bold hover:shadow-lg hover:shadow-[var(--btn-color)]/30 active:scale-95 transition-all text-sm"
+                >
+                  View All Orders →
+                </button>
+              </div>
+              {userOrders.length === 0 ? (
+                <div className="flex flex-col items-center py-8 gap-3">
+                  <p className="text-[var(--text-secondary)]">You haven't placed any orders yet.</p>
+                  <button
+                    onClick={() => navigate("/")}
+                    className="text-[var(--heading-color)] font-bold hover:underline"
+                  >
+                    Start Shopping
+                  </button>
+                </div>
+              ) : (
+                <div className="grid grid-cols-3 gap-4 mt-4">
+                  {[
+                    { label: "Total Orders", value: userOrders.length, icon: "📦" },
+                    { label: "Total Spent", value: `₹${userOrders.reduce((s, o) => s + o.total, 0)}`, icon: "💰" },
+                    { label: "Items Bought", value: userOrders.reduce((s, o) => s + o.items.reduce((a, i) => a + i.quantity, 0), 0), icon: "🛍️" },
+                  ].map((stat) => (
+                    <div key={stat.label} className="bg-[var(--input-color)] rounded-2xl p-4 text-center">
+                      <div className="text-3xl mb-1">{stat.icon}</div>
+                      <p className="text-2xl font-black text-[var(--heading-color)]">{stat.value}</p>
+                      <p className="text-xs text-[var(--text-secondary)] font-medium">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>

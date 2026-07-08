@@ -34,10 +34,16 @@ const ShopContextProvider = ({ children }) => {
     return storedActiveUser ? JSON.parse(storedActiveUser) : null;
   };
 
+  const getInitialOrders = () => {
+    const storedOrders = localStorage.getItem("orders");
+    return storedOrders ? JSON.parse(storedOrders) : [];
+  };
+
   const [cartItems, setCartItems] = useState(getInitialCart);
   const [watchlist, setWatchlist] = useState(getInitialWatchlist);
   const [users, setUsers] = useState(getInitialUsers);
   const [activeUser, setActiveUser] = useState(getInitialActiveUser);
+  const [orders, setOrders] = useState(getInitialOrders);
 
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -51,6 +57,9 @@ const ShopContextProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("activeUser", JSON.stringify(activeUser));
   }, [activeUser]);
+  useEffect(() => {
+    localStorage.setItem("orders", JSON.stringify(orders));
+  }, [orders]);
 
   const productMap = useMemo(() => {
     const map = {};
@@ -145,12 +154,74 @@ const ShopContextProvider = ({ children }) => {
     return totalAmount;
   }, [cartItems, productMap]);
 
+  const clearCart = useCallback(() => {
+    setCartItems(DefaultCart());
+  }, []);
+
+  const cancelOrder = useCallback((orderId) => {
+    setOrders((prev) =>
+      prev.map((o) =>
+        o.orderId === orderId ? { ...o, status: "Cancelled" } : o
+      )
+    );
+  }, []);
+
+  const deleteOrder = useCallback((orderId) => {
+    setOrders((prev) => prev.filter((o) => o.orderId !== orderId));
+  }, []);
+
+  const clearOrderHistory = useCallback(() => {
+    if (!activeUser) return;
+    setOrders((prev) => prev.filter((o) => o.userEmail !== activeUser.email));
+  }, [activeUser]);
+
+  // itemMeta: { [productId]: { color, size } } — optional per-item metadata from checkout
+  const placeOrder = useCallback((shippingInfo = {}, itemMeta = {}) => {
+    const orderedItems = [];
+    for (const itemId in cartItems) {
+      const quantity = cartItems[itemId];
+      if (quantity > 0) {
+        const product = productMap[itemId];
+        if (product) {
+          orderedItems.push({
+            productId: product.id,
+            name: product.name,
+            image: product.image,
+            price: product.price,
+            quantity,
+            subtotal: product.price * quantity,
+            color: itemMeta[product.id]?.color || null,
+            size: itemMeta[product.id]?.size || null,
+            category: product.category || null,
+          });
+        }
+      }
+    }
+    if (orderedItems.length === 0) return null;
+
+    const total = orderedItems.reduce((sum, item) => sum + item.subtotal, 0);
+    const newOrder = {
+      orderId: `ORD-${Date.now()}`,
+      placedAt: new Date().toISOString(),
+      userEmail: activeUser?.email || "guest",
+      items: orderedItems,
+      total,
+      status: "Processing",
+      shippingInfo,
+    };
+
+    setOrders((prev) => [newOrder, ...prev]);
+    setCartItems(DefaultCart());
+    return newOrder;
+  }, [cartItems, productMap, activeUser]);
+
   const contextValue = useMemo(() => ({
     all_product,
     cartItems,
     watchlist,
     users,
     activeUser,
+    orders,
     signup,
     login,
     logout,
@@ -158,9 +229,15 @@ const ShopContextProvider = ({ children }) => {
     addToCart,
     removeFromCart,
     clearFromCart,
+    clearCart,
     toggleWatchlist,
     getTotalCartAmount,
-  }), [cartItems, watchlist, users, activeUser, signup, login, logout, updateProfile, addToCart, removeFromCart, clearFromCart, toggleWatchlist, getTotalCartAmount]);
+    placeOrder,
+    cancelOrder,
+    deleteOrder,
+    clearOrderHistory,
+  }), [cartItems, watchlist, users, activeUser, orders, signup, login, logout, updateProfile, addToCart, removeFromCart, clearFromCart, clearCart, toggleWatchlist, getTotalCartAmount, placeOrder, cancelOrder, deleteOrder, clearOrderHistory]);
+
 
   return (
     <ShopContext.Provider value={contextValue}>

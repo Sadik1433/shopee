@@ -61,12 +61,16 @@ const ProductDetails = ({ product, cartItems }) => {
               )}
             </div>
 
-            <div className="flex items-center gap-3">
-              <span className="text-sm font-bold text-[var(--text-secondary)] uppercase">Size:</span>
-              <span className="px-3 py-1 bg-[var(--input-color)] border border-[var(--border-color)] text-[var(--text-color)] font-bold rounded-lg text-sm">
-                {product.size || "M"}
-              </span>
-            </div>
+            {product.sizes && product.sizes.length > 0 && (
+              <div className="flex items-center gap-3">
+                <span className="text-sm font-bold text-[var(--text-secondary)] uppercase">
+                  {product.category === "electronics" ? "Specification:" : "Size:"}
+                </span>
+                <span className="px-3 py-1 bg-[var(--input-color)] border border-[var(--border-color)] text-[var(--text-color)] font-bold rounded-lg text-sm">
+                  {product.sizes[0]}
+                </span>
+              </div>
+            )}
 
             <div className="space-y-1">
               <span className="text-xs font-bold text-[var(--text-secondary)] uppercase tracking-tighter">Description</span>
