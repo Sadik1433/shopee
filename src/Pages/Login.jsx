@@ -71,7 +71,7 @@ const Login = () => {
               <input
                 type="email"
                 name="email"
-                value={formData.email}
+                value={formData.email}  
                 onChange={changeHandler}
                 placeholder="email@example.com"
                 className="w-full px-4 py-3 rounded-xl bg-[var(--input-color)] border border-[var(--border-color)] focus:border-[var(--heading-color)] outline-none transition-all placeholder:text-[var(--text-secondary)]/50"

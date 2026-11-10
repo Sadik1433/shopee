@@ -37,7 +37,7 @@ const ProductCategory = (props) => {
 
   return (
     <div className="relative top-18 left-1">
-      <div className="max-w-[1230px]">
+      <div className="">
         <div className="relative sticky top-18 z-10 flex">
           <div className="absolute left-0 top-1">
             <button

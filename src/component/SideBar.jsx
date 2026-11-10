@@ -14,7 +14,7 @@ const SideBar = () => {
               </span>
             </label>
           </div>
-          <ul className="absolute top-14 gap-5 menu  w-full px-0 py-1 text-[24px]">
+          <ul className="absolute top-14 gap-5 menu  w-full px-0 py-1 text-[22px]">
             <li>
               <Link to="/">
                 <span>🏠</span>
