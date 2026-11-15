@@ -72,8 +72,8 @@ export default function Reviews() {
   const displayedReviews = showAll ? reviewsData : reviewsData.slice(0, 3);
 
   return (
-    <div className="mr-16 px-4">
-      <h2 className="text-2xl text-[var(--heading-color)] font-semibold mb-6">
+    <div className="w-full max-w-4xl px-2 sm:px-4 my-8">
+      <h2 className="text-2xl sm:text-3xl text-[var(--heading-color)] font-bold mb-6">
         Customer Reviews
       </h2>
 
@@ -81,35 +81,37 @@ export default function Reviews() {
         {displayedReviews.map((review) => (
           <div
             key={review.id}
-            className="p-2 rounded-xl shadow-sm shadow-[var(--text-color)] hover:shadow-md transition-shadow"
+            className="p-3 sm:p-4 rounded-2xl bg-[var(--card-color)] border border-[var(--border-color)] shadow-sm hover:shadow-md transition-shadow"
           >
-            <div className="flex justify-between gap-3">
-              <h1 className="text-[var(--accent-color)] mt-1 font-bold">
-                <span className="ml-2">{review.id} </span>. {review.name}
-              </h1>
+            <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-1 sm:gap-3">
+              <h3 className="text-[var(--accent-color)] font-bold text-sm sm:text-base">
+                <span className="mr-1">{review.id}.</span> {review.name}
+              </h3>
 
-              <div>
-                <span className="text-yellow-600 text-xl">
+              <div className="flex items-center gap-2">
+                <span className="text-yellow-500 text-base sm:text-lg">
                   {"★".repeat(review.rating)}
                   {"☆".repeat(5 - review.rating)}
-                  <span className="font-medium mx-4">
-                    {review.rating} out of 5
-                  </span>
+                </span>
+                <span className="text-xs sm:text-sm font-medium text-[var(--text-secondary)]">
+                  {review.rating} out of 5
                 </span>
               </div>
             </div>
-            <div>
-              <p className="mt-1 text-gray-600 italic">"{review.review}"</p>
+            <div className="mt-2">
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] italic leading-relaxed">
+                "{review.review}"
+              </p>
             </div>
           </div>
         ))}
       </div>
 
       {!showAll && reviewsData.length > 3 && (
-        <div className="mt-4 flex justify-center">
+        <div className="mt-6 flex justify-center">
           <button
             onClick={() => setShowAll(true)}
-            className="px-4 py-2 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition-colors shadow-lg hover:scale-105 transform duration-200"
+            className="px-6 py-2.5 bg-[var(--heading-color)] text-white rounded-full font-bold hover:opacity-90 transition-all shadow-md active:scale-95 cursor-pointer text-sm"
           >
             Show More
           </button>
@@ -117,13 +119,13 @@ export default function Reviews() {
       )}
 
       {showAll && (
-        <div className="mt-4 flex justify-center">
+        <div className="mt-6 flex justify-center">
           <button
             onClick={() => {
               setShowAll(false);
-              window.scrollTo(0, 0);
+              window.scrollTo({ top: 300, behavior: "smooth" });
             }}
-            className="px-4 py-2 border-2 border-black text-white rounded-full font-medium hover:bg-black hover:text-white transition-all duration-200"
+            className="px-6 py-2.5 border-2 border-[var(--heading-color)] text-[var(--heading-color)] rounded-full font-bold hover:bg-[var(--heading-color)] hover:text-white transition-all active:scale-95 cursor-pointer text-sm"
           >
             Show Less
           </button>

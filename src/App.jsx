@@ -20,10 +20,10 @@ const App = () => {
     <>
       <Navbar />
       <ScrollToTop />
-        <div className="flex relative">
-          <SideBar />
-          <AppRouter />
-        </div>
+      <div className="flex relative w-full overflow-x-hidden min-h-screen">
+        <SideBar />
+        <AppRouter />
+      </div>
     </>
   );
 };

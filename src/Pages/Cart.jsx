@@ -29,22 +29,24 @@ const Cart = () => {
   };
 
   return (
-    <div className="min-h-screen w-screen bg-[var(--bg-color)]">
-      <div className="flex gap-2 p-4">
+    <div className="min-h-screen w-full bg-[var(--bg-color)] pb-16">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-6 p-2 sm:p-4 lg:p-6 justify-center items-center lg:items-start">
         {/* Cart list */}
-        <CartList
-          all_product={all_product}
-          cartItems={cartItems}
-          addToCart={addToCart}
-          removeFromCart={removeFromCart}
-          clearFromCart={clearFromCart}
-          onSelect={onSelected}
-          getTotalCartAmount={getTotalCartAmount}
-        />
+        <div className="w-full lg:w-[500px] shrink-0">
+          <CartList
+            all_product={all_product}
+            cartItems={cartItems}
+            addToCart={addToCart}
+            removeFromCart={removeFromCart}
+            clearFromCart={clearFromCart}
+            onSelect={onSelected}
+            getTotalCartAmount={getTotalCartAmount}
+          />
+        </div>
 
         {/* Right panel: Checkout if cart has items or buy-now, else Product Details */}
         {showCheckout ? (
-          <div className="flex-1 sticky top-20 self-start mt-18">
+          <div className="w-full lg:flex-1 lg:max-w-[600px] lg:sticky lg:top-20 self-start mt-4 lg:mt-8">
             <CheckoutSection
               cartItems={cartItems}
               all_product={all_product}
@@ -56,7 +58,9 @@ const Cart = () => {
             />
           </div>
         ) : (
-          <ProductDetails cartItems={cartItems} product={selectedProduct} />
+          <div className="w-full lg:flex-1 lg:max-w-[600px]">
+            <ProductDetails cartItems={cartItems} product={selectedProduct} />
+          </div>
         )}
       </div>
     </div>

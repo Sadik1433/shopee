@@ -44,6 +44,15 @@ const ShopContextProvider = ({ children }) => {
   const [users, setUsers] = useState(getInitialUsers);
   const [activeUser, setActiveUser] = useState(getInitialActiveUser);
   const [orders, setOrders] = useState(getInitialOrders);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+
+  const toggleMobileSidebar = useCallback(() => {
+    setIsMobileSidebarOpen((prev) => !prev);
+  }, []);
+
+  const closeMobileSidebar = useCallback(() => {
+    setIsMobileSidebarOpen(false);
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -222,6 +231,10 @@ const ShopContextProvider = ({ children }) => {
     users,
     activeUser,
     orders,
+    isMobileSidebarOpen,
+    setIsMobileSidebarOpen,
+    toggleMobileSidebar,
+    closeMobileSidebar,
     signup,
     login,
     logout,
@@ -236,7 +249,7 @@ const ShopContextProvider = ({ children }) => {
     cancelOrder,
     deleteOrder,
     clearOrderHistory,
-  }), [cartItems, watchlist, users, activeUser, orders, signup, login, logout, updateProfile, addToCart, removeFromCart, clearFromCart, clearCart, toggleWatchlist, getTotalCartAmount, placeOrder, cancelOrder, deleteOrder, clearOrderHistory]);
+  }), [cartItems, watchlist, users, activeUser, orders, isMobileSidebarOpen, toggleMobileSidebar, closeMobileSidebar, signup, login, logout, updateProfile, addToCart, removeFromCart, clearFromCart, clearCart, toggleWatchlist, getTotalCartAmount, placeOrder, cancelOrder, deleteOrder, clearOrderHistory]);
 
 
   return (

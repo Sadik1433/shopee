@@ -13,7 +13,7 @@ import Orders from '../Pages/Orders.jsx';
 
 const AppRouter = () => {
   return (
-    <div className="relative left-12 ">
+    <div className="relative left-0 lg:left-20 w-full lg:w-[calc(100%-5rem)] min-w-0 transition-all duration-300">
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route

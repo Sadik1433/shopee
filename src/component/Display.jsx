@@ -1,21 +1,12 @@
 import { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext.jsx";
 import FooterSection from "./FooterSection.jsx";
 import ProductTabs from "./ProductTabs.jsx";
 import ReviewsSection from "./Reviews.jsx";
 import DeliveryInfo from "./Delivery.jsx";
 import RelatedProducts from "./RelatedProducts.jsx";
-import { useNavigate } from "react-router-dom";
-import { IoArrowBack } from "react-icons/io5";
-
-
-import {
-  IoHeart,
-  IoHeartOutline,
-  IoShareSocialOutline,
-  IoStar,
-} from "react-icons/io5";
+import { IoArrowBack, IoHeart, IoHeartOutline, IoShareSocialOutline, IoStar } from "react-icons/io5";
 
 const Display = () => {
   const { all_product, addToCart, watchlist, toggleWatchlist, activeUser } = useContext(ShopContext);
@@ -32,6 +23,20 @@ const Display = () => {
       setSelectedColor(product.colors && product.colors.length > 0 ? product.colors[0].name : "");
     }
   }, [product]);
+
+  if (!product) {
+    return (
+      <div className="min-h-screen w-full flex flex-col items-center justify-center gap-4 text-[var(--text-color)] pt-20">
+        <h2 className="text-2xl font-bold">Product Not Found</h2>
+        <button
+          onClick={() => navigate("/")}
+          className="px-6 py-2 bg-[var(--btn-color)] text-white rounded-xl font-bold"
+        >
+          Go Back Home
+        </button>
+      </div>
+    );
+  }
 
   const handleBuyNow = () => {
     if (!activeUser) {
@@ -56,142 +61,143 @@ const Display = () => {
   };
 
   return (
-    <div className="min-h-screen w-full relative left-1 top-16 bg-[var(--bg-color)] ">
-      <div className="pt-2 sticky top-16 z-10 ">
+    <div className="min-h-screen w-full relative top-16 bg-[var(--bg-color)] pb-16">
+      {/* Sticky Back Header */}
+      <div className="pt-2 px-4 sm:px-6 sticky top-16 z-10 bg-[var(--bg-color)]/95 backdrop-blur-md pb-2">
         <button
-          onClick={() => navigate('/')}
-          className="p-2"
+          onClick={() => navigate(-1)}
+          className="p-2 rounded-xl text-[var(--text-color)] hover:bg-[var(--input-color)] transition-colors cursor-pointer"
+          aria-label="Go back"
         >
-          <IoArrowBack size={30} />
+          <IoArrowBack size={26} />
         </button>
       </div>
-      <div className="grid grid-cols-2 gap-1 border-t-1 border-[var(--border-color)]">
-        <div className="relative flex w-[550px] h-[480px] border-r px-2">
-          <div className="flex flex-col h-full mt-[30px]  ">
-            <img
-              src=  {product.image}
-              alt="image1"
-              className="object-cover aspect-square rounded-md mt-3 w-30 min-h-[110px]"
-              loading="lazy"
-            />
-            <img
-              src={product.image}
-              alt="image1"
-              className="object-cover aspect-square rounded-md mt-3 w-30 min-h-[110px]"
-              loading="lazy"
-            />
-            <img
-              src={product.image}
-              alt="image1"
-              loading="lazy"
-              className="object-cover aspect-square rounded-md mt-3 w-30 min-h-[110px]"
-            />
-            <img
-              src={product.image}
-              alt="image1"
-              loading="lazy"
-              className=" object-cover aspect-square rounded-md mt-3 w-30 min-h-[110px]"
-            />
+
+      {/* Main Product Section: 2 cols on lg (exact desktop layout), 1 col on mobile/tablet */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 border-t border-[var(--border-color)] pt-6">
+        
+        {/* Left Column: Thumbnails + Main Image + Actions */}
+        <div className="relative flex flex-col-reverse sm:flex-row w-full lg:w-[550px] lg:h-[480px] border-b lg:border-b-0 lg:border-r border-[var(--border-color)] pb-6 lg:pb-0 px-2 gap-3 justify-center items-center sm:items-start mx-auto">
+          {/* Thumbnails */}
+          <div className="flex sm:flex-col gap-2 overflow-x-auto sm:overflow-visible shrink-0 mt-3 sm:mt-[30px] max-w-full">
+            {[1, 2, 3, 4].map((idx) => (
+              <img
+                key={idx}
+                src={product.image}
+                alt={`thumbnail-${idx}`}
+                className="object-cover aspect-square rounded-md w-16 h-16 sm:w-20 sm:h-20 lg:w-30 lg:min-h-[100px] border border-[var(--border-color)] shadow-xs"
+                loading="lazy"
+              />
+            ))}
           </div>
-          <div className="flex">
-            <div className="relative top-10  px-5  overflow-hidden rounded-md">
+
+          {/* Main Image */}
+          <div className="flex-1 flex justify-center items-center w-full max-w-[400px] sm:max-w-none">
+            <div className="relative sm:top-6 lg:top-10 px-2 sm:px-5 overflow-hidden rounded-xl">
               <img
                 src={product.image}
-                alt="Product view"
+                alt={product.name}
                 loading="lazy"
-                className="h-[480px] object-cover border-blue-200  rounded-md"
+                className="max-h-[320px] sm:max-h-[400px] lg:h-[480px] w-auto object-contain rounded-xl drop-shadow-md"
               />
             </div>
           </div>
-          <div className="flex flex-col justify-between gap-[15px] ml-[20px]">
-            <div className="flex flex-col gap-[10px]">
-              <button className="rounded-md w-max text-gray-600 p-2.5 ">
-                <IoShareSocialOutline className="w-5 h-5" />
-              </button>
-              <button
-                className="rounded-md w-max text-gray-600 p-2.5 "
-                onClick={() => toggleWatchlist(productId)}
-              >
-                {isFavorite ? (
-                  <IoHeart className="w-5 h-5 text-red-500" />
-                ) : (
-                  <IoHeartOutline className="w-5 h-5" />
-                )}
-              </button>
-            </div>
+
+          {/* Share & Wishlist buttons */}
+          <div className="flex sm:flex-col justify-between sm:justify-start gap-3 self-end sm:self-auto shrink-0 sm:ml-2">
+            <button
+              className="rounded-xl text-gray-600 dark:text-gray-300 p-2.5 hover:bg-[var(--input-color)] transition-colors cursor-pointer"
+              aria-label="Share"
+            >
+              <IoShareSocialOutline className="w-5 h-5" />
+            </button>
+            <button
+              className="rounded-xl text-gray-600 dark:text-gray-300 p-2.5 hover:bg-[var(--input-color)] transition-colors cursor-pointer"
+              onClick={() => toggleWatchlist(productId)}
+              aria-label="Toggle wishlist"
+            >
+              {isFavorite ? (
+                <IoHeart className="w-5 h-5 text-red-500" />
+              ) : (
+                <IoHeartOutline className="w-5 h-5" />
+              )}
+            </button>
           </div>
         </div>
 
-        <div className="flex flex-col w-[550px]">
+        {/* Right Column: Details & Actions */}
+        <div className="flex flex-col w-full lg:w-[550px] mx-auto">
           <div className="flex justify-between items-start">
             <div className="w-full">
-              <p className="text-[var(--text-secondary)] text-[0.9rem] mb-2 font-medium">
+              <p className="text-[var(--text-secondary)] text-xs sm:text-sm mb-2 font-medium">
                 Home / {product.category} / {product.name}
               </p>
-              <h1 className="text-3xl text-[var(--text-color)] font-bold mb-4 tracking-tight">
+              <h1 className="text-2xl sm:text-3xl text-[var(--text-color)] font-bold mb-3 tracking-tight">
                 {product.name}
               </h1>
-              <div className="flex flex-row items-center justify-between w-full mb-1">
+              <div className="flex flex-row items-center justify-between w-full mb-3 flex-wrap gap-2">
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl font-bold text-[var(--heading-color)]">
+                  <span className="text-xl sm:text-2xl font-bold text-[var(--heading-color)]">
                     Rs . {product.price.toFixed(2)}
                   </span>
-                  <span className="text-[var(--text-secondary)] text-lg line-through">
+                  <span className="text-[var(--text-secondary)] text-sm sm:text-base line-through">
                     Rs . {product.actualPrice.toFixed(2)}
                   </span>
                 </div>
-                <div className="flex items-center gap-2 bg-[var(--input-color)] px-3 py-1 rounded-full">
-                  <IoStar className="text-yellow-400 text-lg" />
+                <div className="flex items-center gap-1.5 bg-[var(--input-color)] px-3 py-1 rounded-full text-sm">
+                  <IoStar className="text-yellow-400 text-base" />
                   <span className="text-[var(--text-color)] font-bold">
                     {product.rating}
                   </span>
-                  <span className="text-[var(--text-secondary)] text-sm">
+                  <span className="text-[var(--text-secondary)] text-xs">
                     (1,238 Sold)
                   </span>
                 </div>
               </div>
             </div>
-          </div>  
+          </div>
 
-          <div className="mb-3 border-t border-[var(--border-color)] border-dashed pt-3">
-            <h2 className="text-[var(--text-color)] font-bold mb-3 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 text-bold rounded-full bg-[var(--heading-color)]"></span>
+          <div className="mb-4 border-t border-[var(--border-color)] border-dashed pt-3">
+            <h2 className="text-[var(--text-color)] font-bold mb-2 flex items-center gap-2 text-sm sm:text-base">
+              <span className="w-2 h-2 rounded-full bg-[var(--heading-color)]"></span>
               Description
             </h2>
-            <p className="text-[0.95rem] text-[var(--text-secondary)] leading-relaxed">   
+            <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
               Boba etiam ut bulla tea est potus electus singulari compositione
               saporum et textuum, quae in Taiwan annis 1980 orta sunt. Boba
               refert ad pitas marnicas tapiocas in fundo potus inventas, quae
               typice lacte tea nigro sapiuntur.
-              <button className="text-[var(--heading-color)] font-semibold hover:underline ml-2">
+              <button className="text-[var(--heading-color)] font-semibold hover:underline ml-1 cursor-pointer">
                 See More...
               </button>
             </p>
           </div>
 
+          {/* Color Selector */}
           {product.colors && product.colors.length > 0 && (
-            <div className="mb-8">
+            <div className="mb-6">
               <div className="flex justify-between items-center mb-2">
-                <h2 className="font-medium dark:text-[#abc2d3] text-gray-400">
+                <h2 className="font-medium text-xs sm:text-sm text-[var(--text-secondary)]">
                   Color:
-                  <span className="text-gray-700 dark:text-slate-400 font-semibold ml-1">
+                  <span className="text-[var(--text-color)] font-semibold ml-1">
                     {selectedColor}
                   </span>
                 </h2>
               </div>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 {product.colors.map((color) => (
                   <button
                     key={color.name}
                     onClick={() => setSelectedColor(color.name)}
-                    className={` w-20 h-10 rounded-md border-2 transition-all duration-300 ${selectedColor === color.name
-                      ? "border-[#0FABCA] p-1"
-                      : "border-transparent"
-                      } `}
+                    className={`w-14 sm:w-16 h-8 sm:h-9 rounded-xl border-2 transition-all duration-300 cursor-pointer ${
+                      selectedColor === color.name
+                        ? "border-[#0FABCA] p-0.5 scale-105"
+                        : "border-transparent"
+                    }`}
                     aria-label={`Select ${color.name} color`}
                   >
                     <div
-                      className={`w-full h-full rounded-md transition-all duration-300 ${color.class}`}
+                      className={`w-full h-full rounded-lg transition-all ${color.class}`}
                     ></div>
                   </button>
                 ))}
@@ -199,17 +205,18 @@ const Display = () => {
             </div>
           )}
 
+          {/* Size Selector */}
           {product.sizes && product.sizes.length > 0 && (
-            <div className="mb-10">
+            <div className="mb-6">
               <div className="flex justify-between items-center mb-2">
-                <h2 className="font-medium dark:text-[#abc2d3] text-gray-400">
+                <h2 className="font-medium text-xs sm:text-sm text-[var(--text-secondary)]">
                   {product.category === "electronics" ? "Specification:" : "Size:"}
-                  <span className="font-semibold dark:text-slate-400 text-gray-700 ml-1">
+                  <span className="font-semibold text-[var(--text-color)] ml-1">
                     {selectedSize}
                   </span>
                 </h2>
                 {product.category !== "electronics" && (
-                  <button className="text-gray-600 text-[0.8rem] dark:text-[#abc2d3] underline">
+                  <button className="text-xs text-[var(--text-secondary)] underline cursor-pointer">
                     View Size Chart
                   </button>
                 )}
@@ -219,10 +226,11 @@ const Display = () => {
                   <button
                     key={size}
                     onClick={() => setSelectedSize(size)}
-                    className={`px-4 py-2 min-w-[60px] max-w-max rounded-md border text-sm transition-all duration-200 ${selectedSize === size
-                      ? "border-[#0FABCA] bg-[#0FABCA] text-white"
-                      : "border-gray-200 dark:border-slate-700 dark:text-[#abc2d3] hover:border-[#0FABCA]"
-                      }`}
+                    className={`px-3 sm:px-4 py-1.5 sm:py-2 min-w-[50px] rounded-xl border text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+                      selectedSize === size
+                        ? "border-[#0FABCA] bg-[#0FABCA] text-white shadow-sm"
+                        : "border-[var(--border-color)] text-[var(--text-color)] bg-[var(--input-color)] hover:border-[#0FABCA]"
+                    }`}
                   >
                     {size}
                   </button>
@@ -231,27 +239,32 @@ const Display = () => {
             </div>
           )}
 
-          <div className="flex flex-row gap-4 mt-auto">
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3 mt-auto pt-4">
             <button
               onClick={() => addToCart(productId)}
-              className="grow py-3 px-6 bg-[#0FABCA] hover:bg-[#0FABCA]/90 rounded-md text-white"
+              className="flex-1 py-3 px-6 bg-[#0FABCA] hover:bg-[#0FABCA]/90 rounded-xl text-white font-bold transition-all active:scale-98 shadow-sm cursor-pointer"
             >
               Add To Cart
             </button>
             <button
               onClick={handleBuyNow}
-              className="grow py-3 px-6 bg-[var(--btn-color)] hover:bg-[var(--btn-color)]/90 text-white font-bold rounded-md flex items-center justify-center gap-2 transition-all active:scale-[0.98] hover:shadow-lg hover:shadow-[var(--btn-color)]/30"
+              className="flex-1 py-3 px-6 bg-[var(--btn-color)] hover:bg-[var(--btn-color)]/90 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-all active:scale-98 shadow-md hover:shadow-lg cursor-pointer"
             >
               🛍️ Buy Now
             </button>
           </div>
         </div>
       </div>
-      <ProductTabs />
-      <ReviewsSection />
-      <DeliveryInfo />
-      <RelatedProducts heading="Trending" badge="Trending" category={product.category} />
-      <RelatedProducts heading="Offers" badge="Offers" category={product.category} />
+
+      {/* Tabs, Reviews, Delivery & Related Products */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <ProductTabs />
+        <ReviewsSection />
+        <DeliveryInfo />
+        <RelatedProducts heading="Trending" badge="Trending" category={product.category} />
+        <RelatedProducts heading="Offers" badge="Offers" category={product.category} />
+      </div>
       <FooterSection />
     </div>
   );

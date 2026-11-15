@@ -131,17 +131,17 @@ const CheckoutSection = ({
   /* ── success screen ── */
   if (success) {
     return (
-      <div className="w-[600px] bg-[var(--card-color)] border border-[var(--border-color)] rounded-3xl p-10 flex flex-col items-center gap-4 shadow-xl mb-8">
+      <div className="w-full max-w-[600px] bg-[var(--card-color)] border border-[var(--border-color)] rounded-3xl p-6 sm:p-10 flex flex-col items-center gap-4 shadow-xl mb-8 mx-auto">
         <div className="w-20 h-20 rounded-full bg-green-500/10 flex items-center justify-center">
           <IoCheckmarkCircleOutline size={48} className="text-green-500" />
         </div>
-        <h2 className="text-2xl font-bold text-[var(--text-color)]">Order Placed Successfully!</h2>
-        <p className="text-[var(--text-secondary)] text-center">
+        <h2 className="text-xl sm:text-2xl font-bold text-[var(--text-color)] text-center">Order Placed Successfully!</h2>
+        <p className="text-[var(--text-secondary)] text-sm sm:text-base text-center">
           Your order has been confirmed. You can track it in My Orders.
         </p>
         <button
           onClick={() => navigate("/orders")}
-          className="mt-2 px-8 py-3 bg-[var(--btn-color)] text-white rounded-2xl font-bold hover:shadow-lg transition-all active:scale-95"
+          className="mt-2 px-8 py-3 bg-[var(--btn-color)] text-white rounded-2xl font-bold hover:shadow-lg transition-all active:scale-95 cursor-pointer text-sm sm:text-base"
         >
           View My Orders
         </button>
@@ -150,17 +150,17 @@ const CheckoutSection = ({
   }
 
   return (
-    <div className="w-[600px] bg-[var(--card-color)] border border-[var(--border-color)] rounded-3xl shadow-xl mb-8 overflow-hidden">
+    <div className="w-full max-w-[600px] bg-[var(--card-color)] border border-[var(--border-color)] rounded-3xl shadow-xl mb-8 overflow-hidden mx-auto">
       {/* ── section title ── */}
-      <div className="px-6 pt-5 pb-3 border-b border-[var(--border-color)]">
-        <h2 className="text-lg font-bold text-[var(--text-color)] flex items-center gap-2">
+      <div className="px-4 sm:px-6 pt-5 pb-3 border-b border-[var(--border-color)]">
+        <h2 className="text-base sm:text-lg font-bold text-[var(--text-color)] flex items-center gap-2">
           <MdShoppingBag size={20} className="text-[var(--heading-color)]" />
           Checkout
         </h2>
       </div>
 
       {/* ── progress steps ── */}
-      <div className="flex items-center bg-[var(--input-color)] px-6 py-4 gap-0">
+      <div className="flex items-center bg-[var(--input-color)] px-3 sm:px-6 py-3 sm:py-4 gap-0 overflow-x-auto">
         {steps.map(({ n, label }, i, arr) => (
           <div key={n} className="flex items-center flex-1">
             <button
@@ -192,7 +192,7 @@ const CheckoutSection = ({
         ))}
       </div>
 
-      <div className="p-6">
+      <div className="p-4 sm:p-6">
 
         {/* ── STEP 0: Product Configuration (Buy Now only) ── */}
         {step === 0 && hasBuyNow && (

@@ -6,9 +6,8 @@ import Collections from "../component/Collections";
 import RelatedProducts from "../component/RelatedProducts";
 
 const LandingPage = () => {
-
   return (
-    <div className="min-h-screen w-full pt-16 pr-2   overflow-x-hidden">
+    <div className="min-h-screen w-full overflow-x-hidden">
       <Home />
       <Offers />
       <Collections />

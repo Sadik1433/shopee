@@ -45,7 +45,7 @@ const formatDate = (iso) => {
 const ItemDetailPanel = ({ item, onClose }) => {
   if (!item) return null;
   return (
-    <div className="w-[340px] shrink-0 sticky top-24 self-start">
+    <div className="w-full lg:w-[340px] shrink-0 lg:sticky lg:top-24 self-start">
       <div className="bg-[var(--card-color)] border border-[var(--border-color)] rounded-3xl overflow-hidden shadow-xl">
         {/* header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-[var(--border-color)]">
@@ -380,7 +380,7 @@ const Orders = () => {
   }
 
   return (
-    <div className="min-h-screen w-full bg-[var(--bg-color)] px-6 py-24">
+    <div className="min-h-screen w-full bg-[var(--bg-color)] px-3 sm:px-6 py-20 sm:py-24">
 
       {/* ── page header ── */}
       <div className="flex items-center gap-4 mb-8 max-w-[1200px] mx-auto flex-wrap">
@@ -446,10 +446,10 @@ const Orders = () => {
       )}
 
       {/* ── two-column: order list + detail panel ── */}
-      <div className="max-w-[1200px] mx-auto flex gap-6 items-start">
+      <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-6 items-start">
 
         {/* orders list */}
-        <div className="flex-1 min-w-0">
+        <div className="flex-1 min-w-0 w-full">
           {userOrders.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-16 gap-4 bg-[var(--card-color)] border border-[var(--border-color)] rounded-3xl">
               <IoCartOutline size={64} className="text-[var(--heading-color)] opacity-25" />
@@ -467,7 +467,7 @@ const Orders = () => {
           ) : (
             <div className="flex flex-col gap-4">
               {/* stats bar */}
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {[
                   { label: "Total Orders", value: userOrders.length, icon: "📦" },
                   { label: "Total Spent", value: `₹${userOrders.filter(o => o.status !== "Cancelled").reduce((s, o) => s + o.total, 0)}`, icon: "💰" },
